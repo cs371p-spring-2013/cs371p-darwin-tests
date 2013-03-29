@@ -1,0 +1,10 @@
+g++ -pedantic -std=c++0x -Wall Darwin.c++ TestDarwin.c++ -o TestDarwin -lcppunit -ldl
+valgrind TestDarwin
+TestDarwin.c++
+........................
+
+
+OK (24 tests)
+
+
+Done.
