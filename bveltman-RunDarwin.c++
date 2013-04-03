@@ -369,7 +369,7 @@ int main () {
         */
         
         DarwinGame<72, 72> g;
-        int p = (std::rand()%5184);
+        int p = (std::rand()&5184);
         int x = p/72;
         int y = p-(x*72);
         g.addCreature(FOOD, std::rand()%4, x, y);
