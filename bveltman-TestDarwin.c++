@@ -672,6 +672,104 @@ struct TestDarwin : CppUnit::TestFixture {
         CPPUNIT_ASSERT(a.board[0][0].direction == EAST);
         
     }
+    
+    void test_hopping_1 () {
+        std::cout << "Test Hopping 1" << std::endl;
+        DarwinGame <2, 2> a;
+        a.addCreature(HOPPER, EAST, 0, 0);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[0][1].species == HOPPER);
+        CPPUNIT_ASSERT (a.board[0][1].direction == EAST);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[0][1].species == HOPPER);
+        CPPUNIT_ASSERT (a.board[0][1].direction == EAST);
+    }
+    
+    void test_hopping_2 () {
+        std::cout << "Test Hopping 2" << std::endl;
+        DarwinGame <2, 2> a;
+        a.addCreature(HOPPER, WEST, 0, 1);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[0][0].species == HOPPER);
+        CPPUNIT_ASSERT (a.board[0][0].direction == WEST);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[0][0].species == HOPPER);
+        CPPUNIT_ASSERT (a.board[0][0].direction == WEST);
+    }
+    
+    void test_hopping_3 () {
+        std::cout << "Test Hopping 3" << std::endl;
+        DarwinGame <2, 2> a;
+        a.addCreature(HOPPER, NORTH, 1, 0);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[0][0].species == HOPPER);
+        CPPUNIT_ASSERT (a.board[0][0].direction == NORTH);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[0][0].species == HOPPER);
+        CPPUNIT_ASSERT (a.board[0][0].direction == NORTH);
+    }
+    
+     void test_hopping_4 () {
+        std::cout << "Test Hopping 4" << std::endl;
+        DarwinGame <2, 2> a;
+        a.addCreature(HOPPER, SOUTH, 0, 0);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[1][0].species == HOPPER);
+        CPPUNIT_ASSERT (a.board[1][0].direction == SOUTH);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[1][0].species == HOPPER);
+        CPPUNIT_ASSERT (a.board[1][0].direction == SOUTH);
+    }
+     
+     void test_turning_1 () {
+        std::cout << "Test Turning 1" << std::endl;
+        DarwinGame <2, 2> a;
+        a.addCreature(FOOD, SOUTH, 0, 0);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[0][0].species == FOOD);
+        CPPUNIT_ASSERT (a.board[0][0].direction == EAST);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[0][0].species == FOOD);
+        CPPUNIT_ASSERT (a.board[0][0].direction == NORTH);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[0][0].species == FOOD);
+        CPPUNIT_ASSERT (a.board[0][0].direction == WEST);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[0][0].species == FOOD);
+        CPPUNIT_ASSERT (a.board[0][0].direction == SOUTH);
+    }
+     
+     void test_rover_1 () {
+        std::srand(0);
+        std::cout << "Test ROVER 1" << std::endl;
+        //std::cout << std::rand()%2 << std::endl; //with seed 0 we go odd then even for first two calls to rand()
+        //std::cout << std::rand()%2 << std::endl;
+        DarwinGame <2, 2> a;
+        a.addCreature(FOOD, SOUTH, 0, 0);
+        a.addCreature(ROVER, NORTH, 1, 0);
+        a.playGame(1, 1);
+        CPPUNIT_ASSERT (a.board[0][0].species == ROVER);
+        CPPUNIT_ASSERT (a.board[0][0].direction == EAST);
+        CPPUNIT_ASSERT (a.board[1][0].species == ROVER);
+        CPPUNIT_ASSERT (a.board[1][0].direction == NORTH);
+        a.playGame(1, 1);
+        //former food
+        CPPUNIT_ASSERT (a.board[0][1].species == ROVER);
+        CPPUNIT_ASSERT (a.board[0][1].direction == EAST);
+        //original rover
+        CPPUNIT_ASSERT (a.board[0][0].species == ROVER);
+        CPPUNIT_ASSERT (a.board[0][0].direction == NORTH);
+        a.playGame(1, 1);
+        //former food
+        CPPUNIT_ASSERT (a.board[0][1].species == ROVER);
+        std::cout << std::rand()%2 << std::endl; //with seed 0 we go odd then even for first two calls to rand()
+        std::cout << std::rand()%2 << std::endl; //
+        std::cout << "direction of former food is " << a.board[0][1].direction << std::endl;
+        CPPUNIT_ASSERT (a.board[0][1].direction == NORTH);
+        //original rover
+        CPPUNIT_ASSERT (a.board[0][0].species == ROVER);
+        CPPUNIT_ASSERT (a.board[0][0].direction == EAST);
+    }
 
     //------
     // suite
@@ -729,6 +827,12 @@ struct TestDarwin : CppUnit::TestFixture {
 		CPPUNIT_TEST(test_darwin_game_play_game_1);
 		CPPUNIT_TEST(test_darwin_game_play_game_2);
 		CPPUNIT_TEST(test_darwin_game_play_game_3);
+                CPPUNIT_TEST(test_hopping_1);
+                CPPUNIT_TEST(test_hopping_2);
+                CPPUNIT_TEST(test_hopping_3);
+                CPPUNIT_TEST(test_hopping_4);
+                CPPUNIT_TEST(test_turning_1);
+                CPPUNIT_TEST(test_rover_1);
     CPPUNIT_TEST_SUITE_END();
 };
 
