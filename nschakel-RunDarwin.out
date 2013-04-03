@@ -1779,3 +1779,289 @@ Turn = 1000.
 0 ........................................................................
 1 ......................b..................................b....r....b....
 
+*** Darwin 1x1 ***
+Turn = 0.
+  0
+0 r
+
+Turn = 1.
+  0
+0 r
+
+Turn = 2.
+  0
+0 r
+
+Turn = 3.
+  0
+0 r
+
+Turn = 4.
+  0
+0 r
+
+Turn = 5.
+  0
+0 r
+
+Turn = 6.
+  0
+0 r
+
+Turn = 7.
+  0
+0 r
+
+Turn = 8.
+  0
+0 r
+
+Turn = 9.
+  0
+0 r
+
+*** Darwin 3x1 ***
+Turn = 0.
+  0
+0 r
+1 r
+2 r
+
+Turn = 1.
+  0
+0 r
+1 r
+2 r
+
+Turn = 2.
+  0
+0 r
+1 r
+2 r
+
+Turn = 3.
+  0
+0 r
+1 r
+2 r
+
+Turn = 4.
+  0
+0 r
+1 r
+2 r
+
+Turn = 5.
+  0
+0 r
+1 r
+2 r
+
+Turn = 6.
+  0
+0 r
+1 r
+2 r
+
+Turn = 7.
+  0
+0 r
+1 r
+2 r
+
+Turn = 8.
+  0
+0 r
+1 r
+2 r
+
+Turn = 9.
+  0
+0 r
+1 r
+2 r
+
+*** Darwin 1x3 ***
+Turn = 0.
+  012
+0 rrr
+
+Turn = 1.
+  012
+0 rrr
+
+Turn = 2.
+  012
+0 rrr
+
+Turn = 3.
+  012
+0 rrr
+
+Turn = 4.
+  012
+0 rrr
+
+Turn = 5.
+  012
+0 rrr
+
+Turn = 6.
+  012
+0 rrr
+
+Turn = 7.
+  012
+0 rrr
+
+Turn = 8.
+  012
+0 rrr
+
+Turn = 9.
+  012
+0 rrr
+
+*** Darwin 2x2 Best ***
+Turn = 0.
+  01
+0 bb
+1 bb
+
+Turn = 1.
+  01
+0 bb
+1 bb
+
+Turn = 2.
+  01
+0 bb
+1 bb
+
+Turn = 3.
+  01
+0 bb
+1 bb
+
+Turn = 4.
+  01
+0 bb
+1 bb
+
+Turn = 5.
+  01
+0 bb
+1 bb
+
+Turn = 6.
+  01
+0 bb
+1 bb
+
+Turn = 7.
+  01
+0 bb
+1 bb
+
+Turn = 8.
+  01
+0 bb
+1 bb
+
+Turn = 9.
+  01
+0 bb
+1 bb
+
+*** Darwin short with trap***
+Turn = 0.
+  0
+0 t
+1 t
+
+Turn = 1.
+  0
+0 t
+1 t
+
+Turn = 2.
+  0
+0 t
+1 t
+
+Turn = 3.
+  0
+0 t
+1 t
+
+Turn = 4.
+  0
+0 t
+1 t
+
+Turn = 5.
+  0
+0 t
+1 t
+
+Turn = 6.
+  0
+0 t
+1 t
+
+Turn = 7.
+  0
+0 t
+1 t
+
+Turn = 8.
+  0
+0 t
+1 t
+
+Turn = 9.
+  0
+0 t
+1 t
+
+*** Darwin short with best ***
+Turn = 0.
+  01
+0 bb
+
+Turn = 1.
+  01
+0 bb
+
+Turn = 2.
+  01
+0 bb
+
+Turn = 3.
+  01
+0 bb
+
+Turn = 4.
+  01
+0 bb
+
+Turn = 5.
+  01
+0 bb
+
+Turn = 6.
+  01
+0 bb
+
+Turn = 7.
+  01
+0 bb
+
+Turn = 8.
+  01
+0 bb
+
+Turn = 9.
+  01
+0 bb
+

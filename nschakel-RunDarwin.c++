@@ -424,4 +424,121 @@ int main () {
     catch (const out_of_range&) {
         assert(false);}
 
+
+    try {
+        cout << "*** Darwin 1x1 ***" << endl;
+        srand(0);
+        Game g(1,1);
+        Creature rover(buildRover(), Creature::NORTH);
+        g.addCreature(0,0,rover);
+        for (int i = 0; i < 10; i++)
+        {
+          cout << g.toString() << endl;
+          g.move();
+        }
+    }
+    catch (const invalid_argument&) {
+        assert(false);}
+    catch (const out_of_range&) {
+        assert(false);}
+
+    try {
+        cout << "*** Darwin 3x1 ***" << endl;
+        srand(0);
+        Game g(1,3);
+        Creature rover(buildRover(), Creature::NORTH);
+        g.addCreature(0,0,rover);
+        g.addCreature(0,1,rover);
+        g.addCreature(0,2,rover);
+        for (int i = 0; i < 10; i++)
+        {
+          cout << g.toString() << endl;
+          g.move();
+        }
+    }
+    catch (const invalid_argument&) {
+        assert(false);}
+    catch (const out_of_range&) {
+        assert(false);}
+
+    try {
+        cout << "*** Darwin 1x3 ***" << endl;
+        srand(0);
+        Game g(3,1);
+        Creature rover(buildRover(), Creature::NORTH);
+        g.addCreature(0,0,rover);
+        g.addCreature(1,0,rover);
+        g.addCreature(2,0,rover);
+        for (int i = 0; i < 10; i++)
+        {
+          cout << g.toString() << endl;
+          g.move();
+        }
+    }
+    catch (const invalid_argument&) {
+        assert(false);}
+    catch (const out_of_range&) {
+        assert(false);}
+
+    try {
+        cout << "*** Darwin 2x2 Best ***" << endl;
+        srand(0);
+        Game g(2,2);
+        Creature best(buildBest(), Creature::NORTH);
+        g.addCreature(0,0,best);
+        g.addCreature(1,0,best);
+        g.addCreature(0,1,best);
+        g.addCreature(1,1,best);
+        for (int i = 0; i < 10; i++)
+        {
+          cout << g.toString() << endl;
+          g.move();
+        }
+    }
+    catch (const invalid_argument&) {
+        assert(false);}
+    catch (const out_of_range&) {
+        assert(false);}
+
+    try {
+        cout << "*** Darwin short with trap***" << endl;
+        srand(0);
+        Game g(1,2);
+        Creature trap(buildTrap(), Creature::NORTH);
+        g.addCreature(0,0,trap);
+        g.addCreature(0,1,trap);
+        for (int i = 0; i < 10; i++)
+        {
+          cout << g.toString() << endl;
+          g.move();
+        }
+    }
+    catch (const invalid_argument&) {
+        assert(false);}
+    catch (const out_of_range&) {
+        assert(false);}
+
+    try {
+        cout << "*** Darwin short with best ***" << endl;
+        srand(0);
+        Game g(2,1);
+        Creature best(buildBest(), Creature::NORTH);
+        g.addCreature(0,0,best);
+        g.addCreature(1,0,best);
+        for (int i = 0; i < 10; i++)
+        {
+          cout << g.toString() << endl;
+          g.move();
+        }
+    }
+    catch (const invalid_argument&) {
+        assert(false);}
+    catch (const out_of_range&) {
+        assert(false);}
+
+
+
+
+
+
     return 0;}
