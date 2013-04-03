@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -597,7 +596,7 @@ struct TestDarwin : CppUnit::TestFixture {
         DarwinGame <2,2> a;
         std::string w = a.printBoard();
         std::cout << w;
-        CPPUNIT_ASSERT(w.compare("Turn = 0.\n 01\n0..\n1..\n\n") == 0);
+        CPPUNIT_ASSERT(w.compare("Turn = 0.\n  01\n0 ..\n1 ..\n\n") == 0);
     }
     
     void test_darwin_game_print_board_2 () {
@@ -605,7 +604,7 @@ struct TestDarwin : CppUnit::TestFixture {
         a.addCreature(FOOD, NORTH, 0, 0);
         std::string w = a.printBoard();
         std::cout << w;
-        CPPUNIT_ASSERT(w.compare("Turn = 0.\n 012\n0f..\n1...\n2...\n\n") == 0);
+        CPPUNIT_ASSERT(w.compare("Turn = 0.\n  012\n0 f..\n1 ...\n2 ...\n\n") == 0);
     }
     
     void test_darwin_game_print_board_3 () {
@@ -615,7 +614,7 @@ struct TestDarwin : CppUnit::TestFixture {
         a.addCreature(HOPPER, WEST, 1, 1);
         std::string w = a.printBoard();
         std::cout << w;
-        CPPUNIT_ASSERT(w.compare("Turn = 0.\n 012\n0f..\n1.h.\n2..f\n\n") == 0);
+        CPPUNIT_ASSERT(w.compare("Turn = 0.\n  012\n0 f..\n1 .h.\n2 ..f\n\n") == 0);
     }
     
     //tests for playGame
