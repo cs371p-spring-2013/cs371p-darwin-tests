@@ -1,0 +1,101 @@
+==2490== Memcheck, a memory error detector
+==2490== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+==2490== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==2490== Command: TestDarwin
+==2490== 
+TestDarwin.c++
+.......................................Turn = 0.
+  01234567
+0 ........
+1 ........
+2 ........
+3 ....f...
+4 ...frf..
+5 ....f...
+6 ........
+7 ........
+
+Turn = 1.
+  01234567
+0 ........
+1 ........
+2 ........
+3 ....f...
+4 ...rrf..
+5 ....f...
+6 ........
+7 ........
+
+.......Turn = 0.
+  01
+0 ..
+1 ..
+
+.Turn = 0.
+  012
+0 f..
+1 ...
+2 ...
+
+.Turn = 0.
+  012
+0 f..
+1 .h.
+2 ..f
+
+.Turn = 0.
+  012
+0 f..
+1 ...
+2 ..f
+
+Turn = 3.
+  012
+0 f..
+1 ...
+2 ..f
+
+.Turn = 0.
+  012
+0 f..
+1 h..
+2 ..f
+
+Turn = 3.
+  012
+0 f..
+1 ..h
+2 ..f
+
+.Turn = 0.
+  01
+0 rf
+1 ..
+
+Turn = 1.
+  01
+0 rr
+1 ..
+
+
+
+
+OK (51 tests)
+
+
+Done.
+==2490== 
+==2490== HEAP SUMMARY:
+==2490==     in use at exit: 122,880 bytes in 6 blocks
+==2490==   total heap usage: 68,387 allocs, 68,381 frees, 8,726,704 bytes allocated
+==2490== 
+==2490== LEAK SUMMARY:
+==2490==    definitely lost: 0 bytes in 0 blocks
+==2490==    indirectly lost: 0 bytes in 0 blocks
+==2490==      possibly lost: 0 bytes in 0 blocks
+==2490==    still reachable: 122,880 bytes in 6 blocks
+==2490==         suppressed: 0 bytes in 0 blocks
+==2490== Rerun with --leak-check=full to see details of leaked memory
+==2490== 
+==2490== For counts of detected and suppressed errors, rerun with: -v
+==2490== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 4)
