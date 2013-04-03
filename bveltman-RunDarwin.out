@@ -1,7 +1,4 @@
 g++ -pedantic -std=c++0x -Wall RunDarwin.c++ -o RunDarwin
-In file included from RunDarwin.c++:34:0:
-Darwin.c++: In member function ‘void CreatureProgram::getNextMove(char, int, char, char*)’:
-Darwin.c++:331:13: warning: label ‘Bc’ defined but not used [-Wunused-label]
 RunDarwin
 *** Darwin 8x8 ***
 Turn = 0.
