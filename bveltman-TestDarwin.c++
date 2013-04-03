@@ -762,9 +762,6 @@ struct TestDarwin : CppUnit::TestFixture {
         a.playGame(1, 1);
         //former food
         CPPUNIT_ASSERT (a.board[0][1].species == ROVER);
-        std::cout << std::rand()%2 << std::endl; //with seed 0 we go odd then even for first two calls to rand()
-        std::cout << std::rand()%2 << std::endl; //
-        std::cout << "direction of former food is " << a.board[0][1].direction << std::endl;
         CPPUNIT_ASSERT (a.board[0][1].direction == NORTH);
         //original rover
         CPPUNIT_ASSERT (a.board[0][0].species == ROVER);
