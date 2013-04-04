@@ -1,0 +1,148 @@
+TestDarwin.c++
+.....Turn = 0.
+  01
+0 ..
+1 ..
+
+.Turn = 0.
+  01
+0 h.
+1 ..
+
+.Turn = 0.
+  01
+0 h.
+1 h.
+
+.Turn = 0.
+  01
+0 hh
+1 hh
+
+.........Turn = 0.
+  01
+0 hh
+1 hh
+
+Turn = 1.
+  01
+0 hh
+1 hh
+
+.Turn = 0.
+  01
+0 hh
+1 hh
+
+Turn = 5.
+  01
+0 hh
+1 hh
+
+Turn = 10.
+  01
+0 hh
+1 hh
+
+.Turn = 0.
+  01
+0 hh
+1 hh
+
+Turn = 3.
+  01
+0 hh
+1 hh
+
+Turn = 6.
+  01
+0 hh
+1 hh
+
+.Turn = 0.
+  01
+0 hh
+1 hh
+
+Turn = 1.
+  01
+0 hh
+1 hh
+
+Turn = 2.
+  01
+0 hh
+1 hh
+
+Turn = 3.
+  01
+0 hh
+1 hh
+
+......Turn = 0.
+  01
+0 h.
+1 ..
+
+Turn = 1.
+  01
+0 h.
+1 ..
+
+Turn = 2.
+  01
+0 h.
+1 ..
+
+Turn = 3.
+  01
+0 h.
+1 ..
+
+.Turn = 0.
+  01
+0 hh
+1 ..
+
+Turn = 1.
+  01
+0 hh
+1 ..
+
+Turn = 2.
+  01
+0 hh
+1 ..
+
+Turn = 3.
+  01
+0 hh
+1 ..
+
+.Turn = 0.
+  01
+0 hh
+1 ..
+
+Turn = 1.
+  01
+0 hh
+1 ..
+
+Turn = 2.
+  01
+0 hh
+1 ..
+
+Turn = 3.
+  01
+0 hh
+1 ..
+
+
+
+
+OK (28 tests)
+
+
+Done.
