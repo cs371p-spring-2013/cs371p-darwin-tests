@@ -1,4 +1,5 @@
-RunDarwin
+g++ -pedantic -std=c++0x -Wall Darwin.c++ RunDarwin.c++ -o RunDarwin
+valgrind RunDarwin
 *** Darwin 8x8 ***
 Turn = 0.
   01234567
