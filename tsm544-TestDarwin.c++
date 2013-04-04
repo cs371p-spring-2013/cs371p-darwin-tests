@@ -208,8 +208,6 @@ struct TestCreature : CppUnit::TestFixture {
     CPPUNIT_ASSERT(s == "hop");
   }
 
-
-
   // Simple but unavoidable getters
   // Only one test each
   void getSpecies01 () {
@@ -256,6 +254,25 @@ struct TestCreature : CppUnit::TestFixture {
   CPPUNIT_TEST_SUITE_END();
 };
 
+// Only one constructor
+// with only one execution path
+// Just testing it once
+struct TestCreatureData : CppUnit::TestFixture {
+  void constructor01 () {
+    Creature c0 ("food", North);
+    CreatureData c (c0, 0, 0);
+    CPPUNIT_ASSERT(c.creature.species == c0.species);
+    CPPUNIT_ASSERT(c.creature.direction == c0.direction);
+    CPPUNIT_ASSERT(c.x == 0);
+    CPPUNIT_ASSERT(c.y == 0);
+    CPPUNIT_ASSERT(!c.alreadyMovedThisTurn);
+  }
+
+  CPPUNIT_TEST_SUITE(TestCreatureData);
+  CPPUNIT_TEST(constructor01);
+  CPPUNIT_TEST_SUITE_END();
+};
+
 struct TestGameMap : CppUnit::TestFixture {
 
   
@@ -280,6 +297,7 @@ int main() {
   CppUnit::TextTestRunner tr;
 
   tr.addTest(TestDarwin::suite());
+  tr.addTest(TestCreatureData::suite());
   tr.addTest(TestGameMap::suite());
   tr.addTest(TestCreature::suite());
 
