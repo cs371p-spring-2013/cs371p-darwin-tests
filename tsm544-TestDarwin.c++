@@ -28,16 +28,71 @@ To test the program:
 #include "cppunit/TestFixture.h"             // TestFixture
 #include "cppunit/TextTestRunner.h"          // TestRunner
 
+#define private public
+#define protected public
+#define class struct
+
 #include "Darwin.h"
 #include "GameMap.h"
 #include "Creature.h"
 
-struct TestDarwin : CppUnit::TestFixture {
 
+struct TestCreature : CppUnit::TestFixture {
 
+  void constructor01 () {
+    Creature c ("food", North);
+    CPPUNIT_ASSERT(c.species == "food");
+    CPPUNIT_ASSERT(c.direction == North);
+    CPPUNIT_ASSERT(c.instructions[0] == "left");
+    CPPUNIT_ASSERT(c.instructions[1] == "go 0");
+  }
+
+  void constructor02 () {
+    Creature c ("hopper", South);
+    CPPUNIT_ASSERT(c.species == "hopper");
+    CPPUNIT_ASSERT(c.direction == South);
+    CPPUNIT_ASSERT(c.instructions[0] == "hop");
+    CPPUNIT_ASSERT(c.instructions[1] == "go 0");
+  }
+
+  void constructor03 () {
+    Creature c ("rover", East);
+    CPPUNIT_ASSERT(c.species == "rover");
+    CPPUNIT_ASSERT(c.direction == East);
+    CPPUNIT_ASSERT(c.instructions[0] == "if_enemy 9");
+    CPPUNIT_ASSERT(c.instructions[1] == "if_empty 7");
+    CPPUNIT_ASSERT(c.instructions[2] == "if_random 5");
+    CPPUNIT_ASSERT(c.instructions[3] == "left");
+    CPPUNIT_ASSERT(c.instructions[4] == "go 0");
+    CPPUNIT_ASSERT(c.instructions[5] == "right");
+    CPPUNIT_ASSERT(c.instructions[6] == "go 0");
+    CPPUNIT_ASSERT(c.instructions[7] == "hop");
+    CPPUNIT_ASSERT(c.instructions[8] == "go 0");
+    CPPUNIT_ASSERT(c.instructions[9] == "infect");
+    CPPUNIT_ASSERT(c.instructions[10] == "go 0");
+  }
+  
+  void constructor04 () {
+    Creature c ("trap", West);
+    CPPUNIT_ASSERT(c.species == "trap");
+    CPPUNIT_ASSERT(c.direction == West);
+    CPPUNIT_ASSERT(c.instructions[0] == "if_enemy 3");
+    CPPUNIT_ASSERT(c.instructions[1] == "left");
+    CPPUNIT_ASSERT(c.instructions[2] == "go 0");
+    CPPUNIT_ASSERT(c.instructions[3] == "infect");
+    CPPUNIT_ASSERT(c.instructions[4] == "go 0");
+  }
+  
   //--------------------------------
   // Test Suite
-  CPPUNIT_TEST_SUITE(TestDarwin);
+  CPPUNIT_TEST_SUITE(TestCreature);
+
+  CPPUNIT_TEST(constructor01);
+  CPPUNIT_TEST(constructor02);
+  CPPUNIT_TEST(constructor03);
+  CPPUNIT_TEST(constructor04);
+  
+  
   CPPUNIT_TEST_SUITE_END();
 };
 
@@ -50,12 +105,12 @@ struct TestGameMap : CppUnit::TestFixture {
   CPPUNIT_TEST_SUITE_END();
 };
 
-struct TestCreature : CppUnit::TestFixture {
+struct TestDarwin : CppUnit::TestFixture {
 
-  
+
   //--------------------------------
   // Test Suite
-  CPPUNIT_TEST_SUITE(TestCreature);
+  CPPUNIT_TEST_SUITE(TestDarwin);
   CPPUNIT_TEST_SUITE_END();
 };
 
