@@ -4,22 +4,6 @@
  * @author Taylor Mckinney, tsm544
  */
 
-/*
-To test the program:
-    % ls /usr/include/cppunit/
-    ...
-    TestFixture.h
-    ...
-    % locate libcppunit.a
-    /usr/lib/libcppunit.a
-    % g++ -pedantic -std=c++0x -Wall Allocator.c++ TestAllocator.c++ -o TestAllocator -lcppunit -ldl
-    % valgrind TestAllocator >& TestAllocator.out
-*/
-
-// --------
-// includes
-// --------
-
 #include <iostream>  // ios_base
 #include <string>
 
@@ -275,10 +259,86 @@ struct TestCreatureData : CppUnit::TestFixture {
 
 struct TestGameMap : CppUnit::TestFixture {
 
+  // Constructor has only one path of execution
+  void constructor01 () {
+    GameMap m (0, 0);
+    CPPUNIT_ASSERT(m.height == 0);
+    CPPUNIT_ASSERT(m.width == 0);
+  }
+  
+  void constructor02 () {
+    srand(0);
+    int x1 = rand() % 1000000;
+    int y1 = rand() % 1000000;
+    GameMap m (x1, y1);
+    CPPUNIT_ASSERT(m.height == x1);
+    CPPUNIT_ASSERT(m.width == y1);
+  }
+
+  void addCreature01 () {
+    GameMap m (1, 1);
+    Creature c ("hopper", North);
+    m.addCreature(c, 0, 0);
+
+    CPPUNIT_ASSERT(m.gameMap.find(point(0, 0))->second.creature.species == "hopper");
+    CPPUNIT_ASSERT(m.gameMap.find(point(0, 0))->second.creature.direction == North);
+  }
+  
+  void addCreature02 () {
+    GameMap m (5, 5);
+    Creature c ("hopper", North);
+    m.addCreature(c, 2, 2);
+
+    CPPUNIT_ASSERT(m.gameMap.find(point(2, 2))->second.creature.species == "hopper");
+    CPPUNIT_ASSERT(m.gameMap.find(point(2, 2))->second.creature.direction == North);
+  }
+
+  void addCreature03 () {
+    GameMap m (5, 5);
+    Creature c0 ("hopper", North);
+    Creature c1 ("food", South);
+    
+    m.addCreature(c0, 2, 2);
+    m.addCreature(c1, 2, 2);
+
+    CPPUNIT_ASSERT(m.gameMap.find(point(2, 2))->second.creature.species == "hopper");
+    CPPUNIT_ASSERT(m.gameMap.find(point(2, 2))->second.creature.direction == North);
+  }
+
+  void addCreature04 () {
+    GameMap m (5, 5);
+    Creature c0 ("hopper", North);
+    Creature c1 ("food", South);
+    Creature c2 ("trap", West);
+    Creature c3 ("rover", East);
+    
+    m.addCreature(c0, 2, 2);
+    m.addCreature(c1, 3, 2);
+    m.addCreature(c2, 2, 3);
+    m.addCreature(c3, 3, 3);
+
+    CPPUNIT_ASSERT(m.gameMap.find(point(2, 2))->second.creature.species == "hopper");
+    CPPUNIT_ASSERT(m.gameMap.find(point(2, 2))->second.creature.direction == North);
+    CPPUNIT_ASSERT(m.gameMap.find(point(3, 2))->second.creature.species == "food");
+    CPPUNIT_ASSERT(m.gameMap.find(point(3, 2))->second.creature.direction == South);
+    CPPUNIT_ASSERT(m.gameMap.find(point(2, 3))->second.creature.species == "trap");
+    CPPUNIT_ASSERT(m.gameMap.find(point(2, 3))->second.creature.direction == West);
+    CPPUNIT_ASSERT(m.gameMap.find(point(3, 3))->second.creature.species == "rover");
+    CPPUNIT_ASSERT(m.gameMap.find(point(3, 3))->second.creature.direction == East);
+  }
   
   //--------------------------------
   // Test Suite
   CPPUNIT_TEST_SUITE(TestGameMap);
+  
+  CPPUNIT_TEST(constructor01);
+  CPPUNIT_TEST(constructor02);
+
+  CPPUNIT_TEST(addCreature01);
+  CPPUNIT_TEST(addCreature02);
+  CPPUNIT_TEST(addCreature03);
+  CPPUNIT_TEST(addCreature04);
+  
   CPPUNIT_TEST_SUITE_END();
 };
 
