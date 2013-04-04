@@ -20,9 +20,8 @@ To test the program:
 // includes
 // --------
 
-#include <algorithm> // count
 #include <iostream>  // ios_base
-#include <memory>    // allocator
+#include <string>
 
 #include "cppunit/extensions/HelperMacros.h" // CPPUNIT_TEST, CPPUNIT_TEST_SUITE, CPPUNIT_TEST_SUITE_END
 #include "cppunit/TestFixture.h"             // TestFixture
@@ -191,6 +190,24 @@ struct TestCreature : CppUnit::TestFixture {
     CPPUNIT_ASSERT(c1.direction == South);
   }
 
+  void getNextAction01 () {
+    Creature c ("food", North);
+    string s = c.getNextAction(false, false, false);
+    CPPUNIT_ASSERT(s == "left");
+  }
+
+  void getNextAction02 () {
+    Creature c ("rover", North);
+    string s = c.getNextAction(false, false, false);
+    CPPUNIT_ASSERT(s == "left" || s == "right");
+  }
+
+  void getNextAction03 () {
+    Creature c ("hopper", North);
+    string s = c.getNextAction(false, false, false);
+    CPPUNIT_ASSERT(s == "hop");
+  }
+
 
 
   // Simple but unavoidable getters
@@ -227,6 +244,10 @@ struct TestCreature : CppUnit::TestFixture {
   CPPUNIT_TEST(infect01);
   CPPUNIT_TEST(infect02);
   CPPUNIT_TEST(infect03);
+
+  CPPUNIT_TEST(getNextAction01);
+  CPPUNIT_TEST(getNextAction02);
+  CPPUNIT_TEST(getNextAction03);
 
   CPPUNIT_TEST(getSpecies01);
   CPPUNIT_TEST(getDirection01);
