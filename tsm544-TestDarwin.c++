@@ -409,6 +409,72 @@ struct TestGameMap : CppUnit::TestFixture {
     m.runStep();
     CPPUNIT_ASSERT(!test0);
   }
+
+  void runCreatureProgram01 () {
+    GameMap m (1, 1);
+    Creature c0 ("food", North);
+    m.addCreature(c0, 0, 0);
+    CreatureData& cd0 = m.gameMap.find(point(0, 0))->second;
+
+    CPPUNIT_ASSERT(cd0.creature.direction == North);
+    CPPUNIT_ASSERT(!cd0.alreadyMovedThisTurn);
+    CPPUNIT_ASSERT(cd0.x == 0);
+    CPPUNIT_ASSERT(cd0.y == 0);
+    CPPUNIT_ASSERT(cd0.creature.currentLineNumber == 0);
+    CPPUNIT_ASSERT(cd0.creature.instructions[0] == "left");
+    
+    m.runCreatureProgram(cd0);
+    
+    CPPUNIT_ASSERT(cd0.creature.direction == West);
+    CPPUNIT_ASSERT(cd0.alreadyMovedThisTurn);
+    CPPUNIT_ASSERT(cd0.x == 0);
+    CPPUNIT_ASSERT(cd0.y == 0);
+    CPPUNIT_ASSERT(cd0.creature.currentLineNumber == 1);
+  }
+  
+  void runCreatureProgram02 () {
+    GameMap m (1, 1);
+    Creature c0 ("hopper", North);
+    m.addCreature(c0, 0, 0);
+    CreatureData& cd0 = m.gameMap.find(point(0, 0))->second;
+
+    CPPUNIT_ASSERT(cd0.creature.direction == North);
+    CPPUNIT_ASSERT(!cd0.alreadyMovedThisTurn);
+    CPPUNIT_ASSERT(cd0.x == 0);
+    CPPUNIT_ASSERT(cd0.y == 0);
+    CPPUNIT_ASSERT(cd0.creature.currentLineNumber == 0);
+    CPPUNIT_ASSERT(cd0.creature.instructions[0] == "hop");
+    
+    m.runCreatureProgram(cd0);
+    
+    CPPUNIT_ASSERT(cd0.creature.direction == North);
+    CPPUNIT_ASSERT(cd0.alreadyMovedThisTurn);
+    CPPUNIT_ASSERT(cd0.x == 0);
+    CPPUNIT_ASSERT(cd0.y == 0);
+    CPPUNIT_ASSERT(cd0.creature.currentLineNumber == 1);
+  }
+  
+  void runCreatureProgram03 () {
+    GameMap m (5, 5);
+    Creature c0 ("hopper", North);
+    m.addCreature(c0, 4, 0);
+    CreatureData& cd0 = m.gameMap.find(point(4, 0))->second;
+
+    CPPUNIT_ASSERT(cd0.creature.direction == North);
+    CPPUNIT_ASSERT(!cd0.alreadyMovedThisTurn);
+    CPPUNIT_ASSERT(cd0.x == 4);
+    CPPUNIT_ASSERT(cd0.y == 0);
+    CPPUNIT_ASSERT(cd0.creature.currentLineNumber == 0);
+    CPPUNIT_ASSERT(cd0.creature.instructions[0] == "hop");
+    
+    m.runCreatureProgram(cd0);
+    
+    CPPUNIT_ASSERT(cd0.creature.direction == North);
+    CPPUNIT_ASSERT(cd0.alreadyMovedThisTurn);
+    CPPUNIT_ASSERT(cd0.x == 3);
+    CPPUNIT_ASSERT(cd0.y == 0);
+    CPPUNIT_ASSERT(cd0.creature.currentLineNumber == 1);
+  }
   
   //--------------------------------
   // Test Suite
@@ -429,6 +495,10 @@ struct TestGameMap : CppUnit::TestFixture {
   CPPUNIT_TEST(runStep01);
   CPPUNIT_TEST(runStep02);
   CPPUNIT_TEST(runStep03);
+
+  CPPUNIT_TEST(runCreatureProgram01);
+  CPPUNIT_TEST(runCreatureProgram02);
+  CPPUNIT_TEST(runCreatureProgram03);
   
   CPPUNIT_TEST_SUITE_END();
 };
