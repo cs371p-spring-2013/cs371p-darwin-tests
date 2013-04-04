@@ -94,6 +94,7 @@ int main () {
     // ----------
 
     try {
+        /// Test 1
         cout << "*** Darwin 8x8 ***" << endl;
         Darwin darwin(8, 8, 5, cout, 1);
 
@@ -128,6 +129,7 @@ int main () {
     // ----------
 
     try {
+        /// Test 2
         cout << "*** Darwin 7x9 ***" << endl;
         srand(0);
         Darwin darwin(7, 9, 5, cout, 1);
@@ -160,6 +162,7 @@ int main () {
     // ------------
 
     try {
+        // Test 3
         cout << "*** Darwin 72x72 without Best ***" << endl;
         srand(0);
         Darwin darwin(72, 72, 1000, cout, 100);
@@ -220,6 +223,7 @@ int main () {
     // ------------
 
     try {
+        // Test 4
         cout << "*** Darwin 72x72 with Best ***" << endl;
         srand(0);
         Darwin darwin(72, 72, 1000, cout, 100);
@@ -284,7 +288,11 @@ int main () {
         assert(false);}
 
 
+
+
+
     try {
+        // Test 5
         cout << "*** Battle Royal: Darwin 72x72 with Best & Rover x50***" << endl;
         srand(0);
         Darwin darwin(72, 72, 1000, cout, 100);
@@ -311,6 +319,7 @@ int main () {
         assert(false);}
 
     try {
+        // Test 6
         cout << "*** Death Alley: Darwin 100x20 with Best ***" << endl;
         srand(0);
         Darwin darwin(100, 20, 1000, cout, 100);
@@ -337,7 +346,12 @@ int main () {
     catch (const out_of_range&) {
         assert(false);}
 
+
+
+
+
     try {
+        // Test 7
         cout << "*** Food Fight: Darwin 100x100 with Best ***" << endl;
         srand(0);
         Darwin darwin(100, 100, 1000, cout, 100);
@@ -361,6 +375,130 @@ int main () {
             int randValPosition = rand() % (10000);
             int randValDirection = rand() % 4;
             darwin.addCreatureToWorld(Batman_Type, {randValPosition/100, randValPosition % 100}, static_cast<Direction>(randValDirection));
+        }
+
+        darwin.runSimulations();
+
+        }
+    catch (const invalid_argument&) {
+        assert(false);}
+    catch (const out_of_range&) {
+        assert(false);}
+
+
+
+
+
+    try {
+        // Test 8
+        cout << "*** BestvRover, 10v10: Darwin 100x100 ***" << endl;
+        srand(0);
+        Darwin darwin(100, 100, 3000, cout, 100);
+
+        // Food
+        for(int i = 0; i < 300; i++) {
+            int randValPosition = rand() % (10000);
+            int randValDirection = rand() % 4;
+            darwin.addCreatureToWorld(Food_Type, {randValPosition/100, randValPosition % 100}, static_cast<Direction>(randValDirection));
+        }
+
+        // Rover
+        for(int i = 0; i < 10; i++) {
+            int randValPosition = rand() % (10000);
+            int randValDirection = rand() % 4;
+            darwin.addCreatureToWorld(Batman_Type, {randValPosition/100, randValPosition % 100}, static_cast<Direction>(randValDirection));
+        }
+
+        /// Add Batman
+        for(int i = 0; i < 10; i++) {
+            int randValPosition = rand() % (10000);
+            int randValDirection = rand() % 4;
+            darwin.addCreatureToWorld(Rover_Type, {randValPosition/100, randValPosition % 100}, static_cast<Direction>(randValDirection));
+        }
+
+        darwin.runSimulations();
+
+        }
+    catch (const invalid_argument&) {
+        assert(false);}
+    catch (const out_of_range&) {
+        assert(false);}
+
+
+
+
+
+    try {
+        // Test 9
+        cout << "*** BestvTrapvRover, 10v10v100: Darwin 60x60 ***" << endl;
+        srand(0);
+        Darwin darwin(60, 60, 1000, cout, 100);
+
+        // Trap
+        for(int i = 0; i < 10; i++) {
+            int randValPosition = rand() % (3600);
+            int randValDirection = rand() % 4;
+            darwin.addCreatureToWorld(Trap_Type, {randValPosition/60, randValPosition % 60}, static_cast<Direction>(randValDirection));
+        }
+
+        /// Add Rover
+        for(int i = 0; i < 100; i++) {
+            int randValPosition = rand() % (3600);
+            int randValDirection = rand() % 4;
+            darwin.addCreatureToWorld(Rover_Type, {randValPosition/60, randValPosition % 60}, static_cast<Direction>(randValDirection));
+        }
+
+        // Add Batman
+        for(int i = 0; i < 10; i++) {
+            int randValPosition = rand() % (3600);
+            int randValDirection = rand() % 4;
+            darwin.addCreatureToWorld(Batman_Type, {randValPosition/60, randValPosition % 60}, static_cast<Direction>(randValDirection));
+        }
+
+        darwin.runSimulations();
+
+        }
+    catch (const invalid_argument&) {
+        assert(false);}
+    catch (const out_of_range&) {
+        assert(false);}
+
+
+
+
+
+    try {
+        // Test 10
+        cout << "*** BestvTrapvRovervHopper, 10v10v50v50: Darwin 80x80 ***" << endl;
+        srand(0);
+        Darwin darwin(80, 80, 1000, cout, 100);
+
+        // Trap
+        for(int i = 0; i < 10; i++) {
+            int randValPosition = rand() % (6400);
+            int randValDirection = rand() % 4;
+            darwin.addCreatureToWorld(Trap_Type, {randValPosition/80, randValPosition % 80}, static_cast<Direction>(randValDirection));
+        }
+
+        // Add Hopper
+        for(int i = 0; i < 50; i++) {
+            int randValPosition = rand() % (6400);
+            int randValDirection = rand() % 4;
+            darwin.addCreatureToWorld(Hopper_Type, {randValPosition/80, randValPosition % 80}, static_cast<Direction>(randValDirection));
+        }
+
+        /// Add Rover
+        for(int i = 0; i < 50; i++) {
+            int randValPosition = rand() % (6400);
+            int randValDirection = rand() % 4;
+            darwin.addCreatureToWorld(Rover_Type, {randValPosition/80, randValPosition % 80}, static_cast<Direction>(randValDirection));
+        }
+
+        // Add Batman
+        for(int i = 0; i < 10; i++) {
+            int randValPosition = rand() % (6400);
+            int randValDirection = rand() % 4;
+            darwin.addCreatureToWorld(Batman_Type, {randValPosition/80, randValPosition % 80}, static_cast<Direction>(randValDirection));
         }
 
         darwin.runSimulations();
