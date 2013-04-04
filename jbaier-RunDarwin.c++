@@ -67,18 +67,7 @@ int main () {
     rover.addInstruction(infect);
     rover.addInstruction(go, 0);
 
-    Species best('b');
-    best.addInstruction(enemy, 9);
-    best.addInstruction(empty, 7);
-    best.addInstruction(ran, 5);
-    best.addInstruction(rgt);
-    best.addInstruction(go, 0);
-    best.addInstruction(lft);
-    best.addInstruction(go, 0);
-    best.addInstruction(hop);
-    best.addInstruction(go, 0);
-    best.addInstruction(infect);
-    best.addInstruction(go, 0);
+    //Best Species removed from public repo
 
     // ----------
     // darwin 8x8
