@@ -378,6 +378,37 @@ struct TestGameMap : CppUnit::TestFixture {
     CPPUNIT_ASSERT(test2 == false);
     CPPUNIT_ASSERT(test3 == false);
   }
+
+  void runStep01() {
+    GameMap m (0, 0);
+    // No-op, just making sure we don't crash
+    m.runStep();
+  }
+
+  void runStep02 () {
+    GameMap m (1, 1);
+    
+    Creature c0 ("food", North);
+    m.addCreature(c0, 0, 0);
+    bool& test0 = m.gameMap.find(point(0, 0))->second.alreadyMovedThisTurn;
+
+    CPPUNIT_ASSERT(!test0);
+    m.runStep();
+    CPPUNIT_ASSERT(!test0);
+  }
+
+  void runStep03 () {
+    GameMap m (1, 1);
+    
+    Creature c0 ("food", North);
+    m.addCreature(c0, 0, 0);
+    bool& test0 = m.gameMap.find(point(0, 0))->second.alreadyMovedThisTurn;
+    test0 = true;
+
+    CPPUNIT_ASSERT(test0);
+    m.runStep();
+    CPPUNIT_ASSERT(!test0);
+  }
   
   //--------------------------------
   // Test Suite
@@ -394,6 +425,10 @@ struct TestGameMap : CppUnit::TestFixture {
   CPPUNIT_TEST(resetCreatureTurns01);
   CPPUNIT_TEST(resetCreatureTurns02);
   CPPUNIT_TEST(resetCreatureTurns03);
+
+  CPPUNIT_TEST(runStep01);
+  CPPUNIT_TEST(runStep02);
+  CPPUNIT_TEST(runStep03);
   
   CPPUNIT_TEST_SUITE_END();
 };
