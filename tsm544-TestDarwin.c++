@@ -459,7 +459,7 @@ struct TestGameMap : CppUnit::TestFixture {
     GameMap m (5, 5);
     Creature c0 ("hopper", North);
     m.addCreature(c0, 4, 0);
-    CreatureData& cd0 = m.gameMap.find(point(4, 0))->second;
+    CreatureData cd0 = m.gameMap.find(point(4, 0))->second;
 
     CPPUNIT_ASSERT(cd0.creature.direction == North);
     CPPUNIT_ASSERT(!cd0.alreadyMovedThisTurn);
@@ -469,12 +469,14 @@ struct TestGameMap : CppUnit::TestFixture {
     CPPUNIT_ASSERT(cd0.creature.instructions[0] == "hop");
     
     m.runCreatureProgram(cd0);
+
+    CreatureData cd1 = m.gameMap.find(point(3, 0))->second;
     
-    CPPUNIT_ASSERT(cd0.creature.direction == North);
-    CPPUNIT_ASSERT(cd0.alreadyMovedThisTurn);
-    CPPUNIT_ASSERT(cd0.x == 3);
-    CPPUNIT_ASSERT(cd0.y == 0);
-    CPPUNIT_ASSERT(cd0.creature.currentLineNumber == 1);
+    CPPUNIT_ASSERT(cd1.creature.direction == North);
+    CPPUNIT_ASSERT(cd1.alreadyMovedThisTurn);
+    CPPUNIT_ASSERT(cd1.x == 3);
+    CPPUNIT_ASSERT(cd1.y == 0);
+    CPPUNIT_ASSERT(cd1.creature.currentLineNumber == 1);
   }
 
   // TODO Must test overloaded ostream operator
