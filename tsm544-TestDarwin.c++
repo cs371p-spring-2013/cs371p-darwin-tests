@@ -138,6 +138,72 @@ struct TestCreature : CppUnit::TestFixture {
     c.right();
     CPPUNIT_ASSERT(c.direction == North);
   }
+
+  void infect01 () {
+    Creature c0 ("rover", North);
+    Creature c1 ("food", South);
+    c1.currentLineNumber = 1;
+
+    CPPUNIT_ASSERT(c0.species == "rover");
+    CPPUNIT_ASSERT(c1.species == "food");
+    CPPUNIT_ASSERT(c1.currentLineNumber == 1);
+
+    c0.infect(c1);
+
+    CPPUNIT_ASSERT(c0.species == "rover");
+    CPPUNIT_ASSERT(c1.species == "rover");
+    CPPUNIT_ASSERT(c1.currentLineNumber == 0);   
+  }
+
+  void infect02 () {
+    Creature c0 ("food", North);
+    Creature c1 ("food", South);
+    c1.currentLineNumber = 1;
+
+    CPPUNIT_ASSERT(c0.species == "food");
+    CPPUNIT_ASSERT(c1.species == "food");
+    CPPUNIT_ASSERT(c1.currentLineNumber == 1);
+    CPPUNIT_ASSERT(c1.direction == South);
+
+    c0.infect(c1);
+
+    CPPUNIT_ASSERT(c0.species == "food");
+    CPPUNIT_ASSERT(c1.species == "food");
+    CPPUNIT_ASSERT(c1.currentLineNumber == 0);
+    CPPUNIT_ASSERT(c1.direction == South);
+  }
+
+  void infect03 () {
+    Creature c0 ("rover", North);
+    Creature c1 ("hopper", South);
+    c1.currentLineNumber = 1;
+
+    CPPUNIT_ASSERT(c0.species == "rover");
+    CPPUNIT_ASSERT(c1.species == "hopper");
+    CPPUNIT_ASSERT(c1.currentLineNumber == 1);
+    CPPUNIT_ASSERT(c1.direction == South);
+
+    c0.infect(c1);
+
+    CPPUNIT_ASSERT(c0.species == "rover");
+    CPPUNIT_ASSERT(c1.species == "rover");
+    CPPUNIT_ASSERT(c1.currentLineNumber == 0); 
+    CPPUNIT_ASSERT(c1.direction == South);
+  }
+
+
+
+  // Simple but unavoidable getters
+  // Only one test each
+  void getSpecies01 () {
+    Creature c ("hopper", North);
+    CPPUNIT_ASSERT(c.getSpecies() == c.species);
+  }
+
+  void getDirection01 () {
+    Creature c ("hopper", North);
+    CPPUNIT_ASSERT(c.getDirection() == c.direction);
+  }
    
   //--------------------------------
   // Test Suite
@@ -157,6 +223,14 @@ struct TestCreature : CppUnit::TestFixture {
   CPPUNIT_TEST(right02);
   CPPUNIT_TEST(right03);
   CPPUNIT_TEST(right04);
+
+  CPPUNIT_TEST(infect01);
+  CPPUNIT_TEST(infect02);
+  CPPUNIT_TEST(infect03);
+
+  CPPUNIT_TEST(getSpecies01);
+  CPPUNIT_TEST(getDirection01);
+
 
   CPPUNIT_TEST_SUITE_END();
 };
