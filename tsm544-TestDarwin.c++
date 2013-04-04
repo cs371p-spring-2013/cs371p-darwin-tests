@@ -5,6 +5,7 @@
  */
 
 #include <iostream>  // ios_base
+#include <sstream>
 #include <string>
 
 #include "cppunit/extensions/HelperMacros.h" // CPPUNIT_TEST, CPPUNIT_TEST_SUITE, CPPUNIT_TEST_SUITE_END
@@ -475,6 +476,51 @@ struct TestGameMap : CppUnit::TestFixture {
     CPPUNIT_ASSERT(cd0.y == 0);
     CPPUNIT_ASSERT(cd0.creature.currentLineNumber == 1);
   }
+
+  // TODO Must test overloaded ostream operator
+  void ostreamOperator01 () {
+    GameMap m (1, 1);
+    ostringstream oss;
+    string expectedResult = "  0\n0 .\n";
+    
+    oss << m;
+
+    CPPUNIT_ASSERT(oss.str() == expectedResult);
+  }
+  
+  void ostreamOperator02 () {
+    GameMap m (1, 1);
+    Creature c ("hopper", North);
+    m.addCreature(c, 0, 0);
+    
+    ostringstream oss;
+    string expectedResult = "  0\n0 h\n";
+    
+    oss << m;
+
+    CPPUNIT_ASSERT(oss.str() == expectedResult);
+  }
+
+  void ostreamOperator03 () {
+    GameMap m (5, 5);
+
+    Creature c0 ("hopper", North);
+    Creature c1 ("food", North);
+    Creature c2 ("rover", North);
+    Creature c3 ("trap", North);
+
+    m.addCreature(c0, 0, 0);
+    m.addCreature(c1, 1, 1);
+    m.addCreature(c2, 2, 2);
+    m.addCreature(c3, 3, 3);
+    
+    ostringstream oss;
+    string expectedResult = "  01234\n0 h....\n1 .f...\n2 ..r..\n3 ...t.\n4 .....\n";
+    
+    oss << m;
+
+    CPPUNIT_ASSERT(oss.str() == expectedResult);
+  }
   
   //--------------------------------
   // Test Suite
@@ -499,12 +545,16 @@ struct TestGameMap : CppUnit::TestFixture {
   CPPUNIT_TEST(runCreatureProgram01);
   CPPUNIT_TEST(runCreatureProgram02);
   CPPUNIT_TEST(runCreatureProgram03);
+
+  CPPUNIT_TEST(ostreamOperator01);
+  CPPUNIT_TEST(ostreamOperator02);
+  CPPUNIT_TEST(ostreamOperator03);
   
   CPPUNIT_TEST_SUITE_END();
 };
 
 struct TestDarwin : CppUnit::TestFixture {
-
+  // TODO
 
   //--------------------------------
   // Test Suite
