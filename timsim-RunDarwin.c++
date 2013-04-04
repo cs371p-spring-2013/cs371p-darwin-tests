@@ -7,7 +7,7 @@
 
 /*
 To run the program:
-    % g++ -pedantic -std=c++0x -Wall RunCollatz.c++ -o RunCollatz.c++.app
+    % g++ -pedantic -std=c++0x -Wall Darwin.c++ RunDarwin.c++ -o RunDarwin.c++.app
     % valgrind RunDarwin.c++.app > RunDarwin.out
 
 To configure Doxygen:
@@ -254,6 +254,7 @@ int main () {
 
     try {
         cout << "*** Darwin 10x10 ***" << endl;
+        srand(0);
         /*
         10x10 Darwin
         Place 3 of each randomly
@@ -265,7 +266,7 @@ int main () {
         Darwin d(10, 10);
         int x, y, n, dir;  
         for (int i = 0; i < 3; ++i){
-            n = (rand() % 100) - 1;
+            n = (rand() % 100);
             x = n / 10;
             y = n % 10; 
             dir = (rand() % 4);
@@ -275,7 +276,7 @@ int main () {
         }
 
         for (int i = 0; i < 3; ++i){
-            n = (rand() % 100) - 1;
+            n = (rand() % 100);
             x = n / 10;
             y = n % 10; 
             dir = (rand() % 4);
@@ -285,7 +286,7 @@ int main () {
         }
 
         for (int i = 0; i < 10; ++i){
-            n = (rand() % 100) - 1;
+            n = (rand() % 100);
             x = n / 10;
             y = n % 10; 
             dir = (rand() % 4);
@@ -307,6 +308,7 @@ int main () {
     // ----------
         try {
         cout << "*** Darwin 10x10 ***" << endl;
+        srand(0);
         /*
         10x10 Darwin
         Place 10 Traps Randomly
@@ -318,7 +320,7 @@ int main () {
         Darwin d(10, 10);
         int x, y, n, dir;  
         for (int i = 0; i < 2; ++i){
-            n = (rand() % 100) - 1;
+            n = (rand() % 100);
             x = n / 10;
             y = n % 10; 
             dir = (rand() % 4);
@@ -328,7 +330,7 @@ int main () {
         }
 
         for (int i = 0; i < 10; ++i){
-            n = (rand() % 100) - 1;
+            n = (rand() % 100);
             x = n / 10;
             y = n % 10; 
             dir = (rand() % 4);
@@ -351,6 +353,7 @@ int main () {
     // ----------
         try {
         cout << "*** Darwin 10x10 ***" << endl;
+        srand(0);
         /*
         10x10 Darwin
         Place 1 Rover Randomly
@@ -364,7 +367,7 @@ int main () {
         Darwin d(10, 10);
         int x, y, n, dir;  
         for (int i = 0; i < 1; ++i){
-            n = (rand() % 100) - 1;
+            n = (rand() % 100);
             x = n / 10;
             y = n % 10; 
             dir = (rand() % 4);
@@ -374,7 +377,7 @@ int main () {
         }
 
         for (int i = 0; i < 5; ++i){
-            n = (rand() % 100) - 1;
+            n = (rand() % 100);
             x = n / 10;
             y = n % 10; 
             dir = (rand() % 4);
@@ -384,7 +387,7 @@ int main () {
         }
 
         for (int i = 0; i < 5; ++i){
-            n = (rand() % 100) - 1;
+            n = (rand() % 100);
             x = n / 10;
             y = n % 10; 
             dir = (rand() % 4);
@@ -394,7 +397,7 @@ int main () {
         }
 
         for (int i = 0; i < 5; ++i){
-            n = (rand() % 100) - 1;
+            n = (rand() % 100);
             x = n / 10;
             y = n % 10; 
             dir = (rand() % 4);
@@ -424,6 +427,7 @@ int main () {
 
     try {
         cout << "*** Darwin 8x8 ***" << endl;
+        srand(0);
         /*
         8x8 Darwin
         Food,   facing east,  at (0, 0)
@@ -505,7 +509,7 @@ int main () {
 
         int x, y, n, dir;  
         for (int i = 0; i < 10; ++i){
-            n = (rand() % 5184) - 1;
+            n = (rand() % 5184);
             x = n / 72;
             y = n % 72; 
             dir = (rand() % 4);
@@ -515,7 +519,7 @@ int main () {
         }
 
         for (int i = 0; i < 10; ++i){
-            n = (rand() % 5184) - 1;
+            n = (rand() % 5184);
             x = n / 72;
             y = n % 72; 
             dir = (rand() % 4);
@@ -525,7 +529,7 @@ int main () {
         }
 
         for (int i = 0; i < 10; ++i){
-            n = (rand() % 5184) - 1;
+            n = (rand() % 5184);
             x = n / 72;
             y = n % 72; 
             dir = (rand() % 4);
@@ -535,7 +539,7 @@ int main () {
         }
 
         for (int i = 0; i < 10; ++i){
-            n = (rand() % 5184) - 1;
+            n = (rand() % 5184);
             x = n / 72;
             y = n % 72; 
             dir = (rand() % 4);
@@ -550,12 +554,5 @@ int main () {
         assert(false);}
     catch (const out_of_range&) {
         assert(false);}
-
-    // ------------
-    // darwin 72x72
-    // with best
-    // ------------
-
-    //....
 
     return 0;}
