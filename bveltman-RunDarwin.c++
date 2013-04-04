@@ -578,7 +578,7 @@ int main () {
         assert(false);}
 
     try {
-        cout << "*** Darwin 72x72 with Best ***" << endl;
+        cout << "*** Darwin 72x72 non-random ***" << endl;
         srand(0);
         /*
         Randomly place the following creatures facing randomly.
@@ -662,7 +662,7 @@ int main () {
     // ------------
 
     try {
-        cout << "*** Darwin 72x72 without Best ***" << endl;
+        cout << "*** Darwin 72x72 non-random 2 ***" << endl;
         srand(0);
         /*
         Randomly place the following creatures facing randomly.
