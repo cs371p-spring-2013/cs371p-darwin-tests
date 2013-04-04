@@ -82,7 +82,63 @@ struct TestCreature : CppUnit::TestFixture {
     CPPUNIT_ASSERT(c.instructions[3] == "infect");
     CPPUNIT_ASSERT(c.instructions[4] == "go 0");
   }
+
+  void left01 () {
+    Creature c("food", North);
+    CPPUNIT_ASSERT(c.direction == North);
+    c.left();
+    CPPUNIT_ASSERT(c.direction == West);
+  }
   
+  void left02 () {
+    Creature c("food", West);
+    CPPUNIT_ASSERT(c.direction == West);
+    c.left();
+    CPPUNIT_ASSERT(c.direction == South);
+  }
+  
+  void left03 () {
+    Creature c("food", South);
+    CPPUNIT_ASSERT(c.direction == South);
+    c.left();
+    CPPUNIT_ASSERT(c.direction == East);
+  }
+  
+  void left04 () {
+    Creature c("food", East);
+    CPPUNIT_ASSERT(c.direction == East);
+    c.left();
+    CPPUNIT_ASSERT(c.direction == North);
+  }
+  
+  void right01 () {
+    Creature c("food", North);
+    CPPUNIT_ASSERT(c.direction == North);
+    c.right();
+    CPPUNIT_ASSERT(c.direction == East);
+  }
+  
+  void right02 () {
+    Creature c("food", East);
+    CPPUNIT_ASSERT(c.direction == East);
+    c.right();
+    CPPUNIT_ASSERT(c.direction == South);
+  }
+  
+  void right03 () {
+    Creature c("food", South);
+    CPPUNIT_ASSERT(c.direction == South);
+    c.right();
+    CPPUNIT_ASSERT(c.direction == West);
+  }
+  
+  void right04 () {
+    Creature c("food", West);
+    CPPUNIT_ASSERT(c.direction == West);
+    c.right();
+    CPPUNIT_ASSERT(c.direction == North);
+  }
+   
   //--------------------------------
   // Test Suite
   CPPUNIT_TEST_SUITE(TestCreature);
@@ -91,8 +147,17 @@ struct TestCreature : CppUnit::TestFixture {
   CPPUNIT_TEST(constructor02);
   CPPUNIT_TEST(constructor03);
   CPPUNIT_TEST(constructor04);
-  
-  
+
+  CPPUNIT_TEST(left01);
+  CPPUNIT_TEST(left02);
+  CPPUNIT_TEST(left03);
+  CPPUNIT_TEST(left04);
+
+  CPPUNIT_TEST(right01);
+  CPPUNIT_TEST(right02);
+  CPPUNIT_TEST(right03);
+  CPPUNIT_TEST(right04);
+
   CPPUNIT_TEST_SUITE_END();
 };
 
