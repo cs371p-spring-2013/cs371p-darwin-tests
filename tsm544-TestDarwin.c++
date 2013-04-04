@@ -556,11 +556,67 @@ struct TestGameMap : CppUnit::TestFixture {
 };
 
 struct TestDarwin : CppUnit::TestFixture {
-  // TODO
+  // Only one constructor with only one path of execution
+  void constructor01 () {
+    ostringstream w;
+    Darwin d(0, 0, w);
+
+    CPPUNIT_ASSERT(d.map.height == 0);
+    CPPUNIT_ASSERT(d.map.width == 0);
+    CPPUNIT_ASSERT(d.output == w);
+  }
+
+  void constructor02 () {
+    ostringstream w;
+    int x = rand() % 1000000;
+    int y = rand() % 1000000;
+
+    Darwin d (x, y, w);
+
+    CPPUNIT_ASSERT(d.map.height == x);
+    CPPUNIT_ASSERT(d.map.width == y);
+    CPPUNIT_ASSERT(d.output == w);
+  }
+
+  void addCreature01 () {
+    
+  }
+
+  void addCreature02 () {
+
+  }
+
+  void addCreature03 () {
+
+  }
+
+  void run01 () {
+
+  }
+
+  void run02 () {
+
+  }
+
+  void run03 () {
+
+  }
 
   //--------------------------------
   // Test Suite
   CPPUNIT_TEST_SUITE(TestDarwin);
+
+  CPPUNIT_TEST(constructor01);
+  CPPUNIT_TEST(constructor02);
+
+  CPPUNIT_TEST(addCreature01);
+  CPPUNIT_TEST(addCreature02);
+  CPPUNIT_TEST(addCreature03);
+
+  CPPUNIT_TEST(run01);
+  CPPUNIT_TEST(run02);
+  CPPUNIT_TEST(run03);
+  
   CPPUNIT_TEST_SUITE_END();
 };
 
