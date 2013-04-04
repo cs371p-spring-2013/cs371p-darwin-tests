@@ -2864,9 +2864,9 @@ struct TestDarwin : CppUnit::TestFixture {
 	std::ostringstream w2;
 
 	x.print_display(0, w1);
-	w2 << "Turn = " << 0 << "." << std::endl << " ";
-	w2 << "0" << std::endl << "0";
-	w2 << "." << std::endl << std::endl;
+	w2 << "Turn = " << 0 << "." << std::endl;
+	w2 << "  0" << std::endl;
+	w2 << "0 ." << std::endl << std::endl;
 
 	CPPUNIT_ASSERT(w1.str() == w2.str());
     }
@@ -2905,9 +2905,9 @@ struct TestDarwin : CppUnit::TestFixture {
 
 	x.print_display(0, w1);
 	w2 << "Turn = " << 0 << "." << std::endl;
-	w2 << " 01" << std::endl;
-	w2 << "0f." << std::endl;
-	w2 << "1.." << std::endl << std::endl;
+	w2 << "  01" << std::endl;
+	w2 << "0 f." << std::endl;
+	w2 << "1 .." << std::endl << std::endl;
 
 	CPPUNIT_ASSERT(w1.str() == w2.str());	
    }
@@ -2954,10 +2954,10 @@ struct TestDarwin : CppUnit::TestFixture {
 
 	x.print_display(0, w1);
 	w2 << "Turn = " << 0 << "." << std::endl;
-	w2 << " 0123" << std::endl;
-	w2 << "0f..." << std::endl;
-	w2 << "1...." << std::endl;
-	w2 << "2...f" << std::endl << std::endl;
+	w2 << "  0123" << std::endl;
+	w2 << "0 f..." << std::endl;
+	w2 << "1 ...." << std::endl;
+	w2 << "2 ...f" << std::endl << std::endl;
 
 	CPPUNIT_ASSERT(w1.str() == w2.str());	
     }
@@ -3003,22 +3003,22 @@ struct TestDarwin : CppUnit::TestFixture {
 
 	x.run_sim(w1);
 	w2 << "Turn = " << 0 << "." << std::endl;
-	w2 << " 0123" << std::endl;
-	w2 << "0f..." << std::endl;
-	w2 << "1...." << std::endl;
-	w2 << "2...f" << std::endl << std::endl;
+	w2 << "  0123" << std::endl;
+	w2 << "0 f..." << std::endl;
+	w2 << "1 ...." << std::endl;
+	w2 << "2 ...f" << std::endl << std::endl;
 
 	w2 << "Turn = " << 1 << "." << std::endl;
-	w2 << " 0123" << std::endl;
-	w2 << "0f..." << std::endl;
-	w2 << "1...." << std::endl;
-	w2 << "2...f" << std::endl << std::endl;
+	w2 << "  0123" << std::endl;
+	w2 << "0 f..." << std::endl;
+	w2 << "1 ...." << std::endl;
+	w2 << "2 ...f" << std::endl << std::endl;
 
 	w2 << "Turn = " << 2 << "." << std::endl;
-	w2 << " 0123" << std::endl;
-	w2 << "0f..." << std::endl;
-	w2 << "1...." << std::endl;
-	w2 << "2...f" << std::endl << std::endl;
+	w2 << "  0123" << std::endl;
+	w2 << "0 f..." << std::endl;
+	w2 << "1 ...." << std::endl;
+	w2 << "2 ...f" << std::endl << std::endl;
 
 	CPPUNIT_ASSERT(w1.str() == w2.str());	
     }
@@ -3099,24 +3099,24 @@ struct TestDarwin : CppUnit::TestFixture {
 
 	x.run_sim(w1);
 	w2 << "Turn = " << 0 << "." << std::endl;
-	w2 << " 01" << std::endl;
-	w2 << "0bt" << std::endl;
-	w2 << "1tt" << std::endl << std::endl;
+	w2 << "  01" << std::endl;
+	w2 << "0 bt" << std::endl;
+	w2 << "1 tt" << std::endl << std::endl;
 
 	w2 << "Turn = " << 1 << "." << std::endl;
-	w2 << " 01" << std::endl;
-	w2 << "0bt" << std::endl;
-	w2 << "1tt" << std::endl << std::endl;
+	w2 << "  01" << std::endl;
+	w2 << "0 bt" << std::endl;
+	w2 << "1 tt" << std::endl << std::endl;
 
 	w2 << "Turn = " << 2 << "." << std::endl;
-	w2 << " 01" << std::endl;
-	w2 << "0bt" << std::endl;
-	w2 << "1tt" << std::endl << std::endl;
+	w2 << "  01" << std::endl;
+	w2 << "0 bt" << std::endl;
+	w2 << "1 tt" << std::endl << std::endl;
 
 	w2 << "Turn = " << 3 << "." << std::endl;
-	w2 << " 01" << std::endl;
-	w2 << "0tt" << std::endl;
-	w2 << "1tt" << std::endl << std::endl;
+	w2 << "  01" << std::endl;
+	w2 << "0 tt" << std::endl;
+	w2 << "1 tt" << std::endl << std::endl;
 
 	CPPUNIT_ASSERT(w1.str() == w2.str());	
     }
@@ -3190,39 +3190,39 @@ struct TestDarwin : CppUnit::TestFixture {
 
 	x.run_sim(w1);
 	w2 << "Turn = " << 0 << "." << std::endl;
-	w2 << " 012" << std::endl;
-	w2 << "0btt" << std::endl;
-	w2 << "1..." << std::endl << std::endl;
+	w2 << "  012" << std::endl;
+	w2 << "0 btt" << std::endl;
+	w2 << "1 ..." << std::endl << std::endl;
 
 	w2 << "Turn = " << 1 << "." << std::endl;
-	w2 << " 012" << std::endl;
-	w2 << "0.tt" << std::endl;
-	w2 << "1b.." << std::endl << std::endl;
+	w2 << "  012" << std::endl;
+	w2 << "0 .tt" << std::endl;
+	w2 << "1 b.." << std::endl << std::endl;
 
 	w2 << "Turn = " << 2 << "." << std::endl;
-	w2 << " 012" << std::endl;
-	w2 << "0.tt" << std::endl;
-	w2 << "1b.." << std::endl << std::endl;
+	w2 << "  012" << std::endl;
+	w2 << "0 .tt" << std::endl;
+	w2 << "1 b.." << std::endl << std::endl;
 
 	w2 << "Turn = " << 3 << "." << std::endl;
-	w2 << " 012" << std::endl;
-	w2 << "0.tt" << std::endl;
-	w2 << "1.b." << std::endl << std::endl;
+	w2 << "  012" << std::endl;
+	w2 << "0 .tt" << std::endl;
+	w2 << "1 .b." << std::endl << std::endl;
 
 	w2 << "Turn = " << 4 << "." << std::endl;
-	w2 << " 012" << std::endl;
-	w2 << "0.tt" << std::endl;
-	w2 << "1..b" << std::endl << std::endl;
+	w2 << "  012" << std::endl;
+	w2 << "0 .tt" << std::endl;
+	w2 << "1 ..b" << std::endl << std::endl;
 
 	w2 << "Turn = " << 5 << "." << std::endl;
-	w2 << " 012" << std::endl;
-	w2 << "0.tt" << std::endl;
-	w2 << "1..b" << std::endl << std::endl;
+	w2 << "  012" << std::endl;
+	w2 << "0 .tt" << std::endl;
+	w2 << "1 ..b" << std::endl << std::endl;
 
 	w2 << "Turn = " << 6 << "." << std::endl;
-	w2 << " 012" << std::endl;
-	w2 << "0.tb" << std::endl;
-	w2 << "1..b" << std::endl << std::endl;
+	w2 << "  012" << std::endl;
+	w2 << "0 .tb" << std::endl;
+	w2 << "1 ..b" << std::endl << std::endl;
 
 	CPPUNIT_ASSERT(w1.str() == w2.str());	
     }
