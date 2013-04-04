@@ -104,7 +104,7 @@ int main () {
 	bprogram.push_back(Instruction(HOP));
 	bprogram.push_back(Instruction(GO, 0));
 	bprogram.push_back(Instruction(INFECT));
-	bprogram.push_back(Instruction(GO, 1));
+	bprogram.push_back(Instruction(GO, 0));
 
 	Species best(bprogram);
 
@@ -549,7 +549,7 @@ int main () {
 	sv.push_back(s);
 
 	// create board
-	Board<3, 3> b(c, sv, 7);
+	Board<3, 3> b(c, sv, 4);
 
 	// run sim
 	b.run_sim();
@@ -571,34 +571,38 @@ int main () {
 	std::vector<Creature> c;
 	struct State s;
 	std::vector<State> sv;
+	int random;
 
-	s.r = (rand() % 225) / 15;
-	s.c = (rand() % 225) % 15;
+	random = (rand() % 225);
+	s.r = random / 15;
+	s.c = random % 15;
 	s.direction = Direction(rand() % 4);
 	s.name = 'f';
 	s.cidx = 0;
 	sv.push_back(s);
 	c.push_back(Creature(&food, s.direction));
 
-	s.r = (rand() % 225) / 15;
-	s.c = (rand() % 225) % 15;
+	random = (rand() % 225);
+	s.r = random / 15;
+	s.c = random % 15;
 	s.direction = Direction(rand() % 4);
 	s.name = 'h';
 	s.cidx = 1;
 	sv.push_back(s);
 	c.push_back(Creature(&hopper, s.direction));
 
-	s.r = (rand() % 225) / 15;
-	s.c = (rand() % 225) % 15;
+	random = (rand() % 225);
+	s.r = random / 15;
+	s.c = random % 15;
 	s.direction = Direction(rand() % 4);
 	s.name = 'r';
 	s.cidx = 2;
 	sv.push_back(s);
 	c.push_back(Creature(&rover, s.direction));
 
-
-	s.r = (rand() % 225) / 15;
-	s.c = (rand() % 225) % 15;
+	random = (rand() % 225);
+	s.r = random / 15;
+	s.c = random % 15;
 	s.direction = Direction(rand() % 4);
 	s.name = 't';
 	s.cidx = 3;
@@ -607,8 +611,9 @@ int main () {
 
 	for (int x = 4; x < 6; ++x)
 	{
-		s.r = (rand() % 225) / 15;
-		s.c = (rand() % 225) % 15;
+		random = (rand() % 225);
+		s.r = random / 15;
+		s.c = random % 15;
 		s.direction = Direction(rand() % 4);
 		s.name = 'b';
 		s.cidx = x;
@@ -661,21 +666,22 @@ int main () {
         assert(false);}
 
     // --------------
-    // darwin 10 x 10
+    // darwin 11 x 11
     // --------------
 
     try {
-        cout << "*** Darwin 10x10 ***" << endl;
+        cout << "*** Darwin 11x11 ***" << endl;
         srand(0);
 
 	std::vector<Creature> c;
 	struct State s;
 	std::vector<State> sv;
 
-	for (int x = 0; x < 5; ++x)
+	for (int x = 0; x < 15; ++x)
 	{
-		s.r = (rand() % 100) / 10;
-		s.c = (rand() % 100) % 10;
+		int random = (rand() % 121);
+		s.r = random / 11;
+		s.c = random % 11;
 		s.direction = Direction(rand() % 4);
 		s.name = 'r';
 		s.cidx = x;
@@ -683,10 +689,11 @@ int main () {
 		c.push_back(Creature(&rover, s.direction));
 	}
 
-	for (int x = 5; x < 10; ++x)
+	for (int x = 15; x < 30; ++x)
 	{
-		s.r = (rand() % 100) / 10;
-		s.c = (rand() % 100) % 10;
+		int random = (rand() % 121);
+		s.r = random / 11;
+		s.c = random % 11;
 		s.direction = Direction(rand() % 4);
 		s.name = 'b';
 		s.cidx = x;
@@ -695,7 +702,7 @@ int main () {
 	}
 
 	// create board
-	Board<10, 10> b(c, sv, 20);
+	Board<11, 11> b(c, sv, 20);
 
 	// run sim
 	b.run_sim();
@@ -1023,7 +1030,7 @@ int main () {
 	sv.push_back(s);
 
 	// create board
-	Board<2, 2> b(c, sv, 4);
+	Board<2, 2> b(c, sv, 7);
 
 	// run sim
 	b.run_sim();

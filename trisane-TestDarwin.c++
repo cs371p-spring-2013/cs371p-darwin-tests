@@ -3053,7 +3053,7 @@ struct TestDarwin : CppUnit::TestFixture {
 	bprogram.push_back(Instruction(HOP));
 	bprogram.push_back(Instruction(GO, 0));
 	bprogram.push_back(Instruction(INFECT));
-	bprogram.push_back(Instruction(GO, 1));
+	bprogram.push_back(Instruction(GO, 0));
 
 	Species best(bprogram);
 
@@ -3115,7 +3115,7 @@ struct TestDarwin : CppUnit::TestFixture {
 
 	w2 << "Turn = " << 3 << "." << std::endl;
 	w2 << "  01" << std::endl;
-	w2 << "0 tt" << std::endl;
+	w2 << "0 bt" << std::endl;
 	w2 << "1 tt" << std::endl << std::endl;
 
 	CPPUNIT_ASSERT(w1.str() == w2.str());	
@@ -3151,7 +3151,7 @@ struct TestDarwin : CppUnit::TestFixture {
 	bprogram.push_back(Instruction(HOP));
 	bprogram.push_back(Instruction(GO, 0));
 	bprogram.push_back(Instruction(INFECT));
-	bprogram.push_back(Instruction(GO, 1));
+	bprogram.push_back(Instruction(GO, 0));
 
 	Species best(bprogram);
 
