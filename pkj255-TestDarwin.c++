@@ -140,8 +140,9 @@ struct TestDarwin : CppUnit::TestFixture {
 
 	void test_process1()
 	{
-		Game x;
+
 		stringstream w;
+		Game x(10,10,w);
 		Creature t = Creature(5, 5, WEST, 't');
 		x.addCreature(5, 5, WEST, 't', t);
 		CPPUNIT_ASSERT(IF_ENEMY == t.program());
@@ -151,8 +152,8 @@ struct TestDarwin : CppUnit::TestFixture {
 	
 	void test_process2()
 	{
-		Game x;
 		stringstream w;
+		Game x(10, 10, w);
 		Creature r = Creature(0, 0, WEST, 'r');
 		x.addCreature(0, 0, WEST, 'r', r);
 		CPPUNIT_ASSERT(IF_ENEMY == r.program());
@@ -163,8 +164,8 @@ struct TestDarwin : CppUnit::TestFixture {
 
 	void test_process3()
 	{
-		Game x;
 		stringstream w;
+		Game x(10, 10, w);
 		Creature t = Creature(5, 5, WEST, 't');
 		x.addCreature(5, 5, WEST, 't', t);
 		Creature f = Creature(5, 4, WEST, 'f');
@@ -180,19 +181,18 @@ struct TestDarwin : CppUnit::TestFixture {
 	// -----
 	void test_GamePrint1()
 	{
-		Game x;
 		stringstream w;
+		Game x(10, 10, w);
 		x.print(w);
-		string out = "\n*** Darwin 10x10 ***\nTurn = 0.\n  0123456789\n0 ..........\n1 ..........\n2 ..........\n3 ..........\n4 ..........\n5 ..........\n6 ..........\n7 ..........\n8 ..........\n9 ..........\n";
-
+		string out = "Turn = 0.\n  0123456789\n0 ..........\n1 ..........\n2 ..........\n3 ..........\n4 ..........\n5 ..........\n6 ..........\n7 ..........\n8 ..........\n9 ..........\n\n";
 		CPPUNIT_ASSERT(w.str() == out );
 	}
 	
 	void test_GamePrint2()
 	{
-		Game x(4, 5);
 		stringstream w;
-		string out = "\n*** Darwin 4x5 ***\nTurn = 0.\n  01234\n0 .....\n1 .....\n2 .....\n3 .....\n";
+		Game x(4, 5, w);
+		string out = "Turn = 0.\n  01234\n0 .....\n1 .....\n2 .....\n3 .....\n\n";
 		x.print(w);
 		CPPUNIT_ASSERT(w.str() == out );
 
@@ -200,25 +200,25 @@ struct TestDarwin : CppUnit::TestFixture {
 	
 	void test_GamePrint3()
 	{
-		Game x(1, 9);
 		stringstream w;
-		string out = "\n*** Darwin 1x9 ***\nTurn = 0.\n  012345678\n0 .........\n";
+		Game x(1, 9, w);
+		string out = "Turn = 0.\n  012345678\n0 .........\n\n";
 		
 		x.print(w);
 		CPPUNIT_ASSERT(w.str() == out );
 	}
 	void test_play1()
 	{
-		Game x(10, 10);
 		stringstream w;
+		Game x(10, 10, w);
 		Creature c = Creature(5, 5, WEST, 'h');
 		x.addCreature(5, 5, WEST, 'h', c);
 		x.play(6, 1, w);
 	}
 	void test_play2()
 	{
-		Game x(10, 10);
 		stringstream w;
+		Game x(10, 10, w);
 		Creature c = Creature(5, 5, WEST, 'h');
 		x.addCreature(5, 5, WEST, 'h', c);
 		x.play(100, 5, w);
@@ -226,8 +226,8 @@ struct TestDarwin : CppUnit::TestFixture {
 	void test_play3()
 	{
 		srand(0);
-		Game x(20, 20);
 		stringstream w;
+		Game x(20, 20, w);
 		Creature c = Creature(10, 10, WEST, 'r');
 		x.addCreature(10, 10, WEST, 'r', c);
 		Creature d = Creature(10, 9, WEST, 'f');
@@ -237,8 +237,8 @@ struct TestDarwin : CppUnit::TestFixture {
 	void test_play4()
 	{
 		srand(0);
-		Game x(20, 20);
 		stringstream w;
+		Game x(20, 20, w);
 		Creature c = Creature(10, 10, WEST, 't');
 		x.addCreature(10, 10, WEST, 't', c);
 		Creature d = Creature(10, 9, WEST, 'f');

@@ -92,7 +92,7 @@ int main () {
     // ----------
 
     try {
-        cout << "*** Darwin 8x8 ***" << endl;
+		cout << "*** Darwin 8x8 ***" <<endl;
         /*
         8x8 Darwin
         Food,   facing east,  at (0, 0)
@@ -104,7 +104,7 @@ int main () {
         Simulate 5 moves.
         Print every grid.
         */
-		Game g(8,8);
+		Game g(8,8, cout);
 		Creature reza = Creature(0 ,0 ,EAST ,'f' );
 		g.addCreature(0, 0, EAST, 'f', reza);
 
@@ -135,7 +135,7 @@ int main () {
     // ----------
 
     try {
-        cout << "*** Darwin 7x9 ***" << endl;
+		cout << "*** Darwin 7x9 ***" <<endl;
         srand(0);
         /*
         7x9 Darwin
@@ -146,7 +146,7 @@ int main () {
         Simulate 5 moves.
         Print every grid.
         */
-		Game g(7, 9);
+		Game g(7, 9, cout);
 
 		Creature reza = Creature(0, 0, SOUTH, 't');
 		g.addCreature(0, 0, SOUTH, 't', reza);
@@ -171,8 +171,9 @@ int main () {
 	// ----------
     // darwin 2x2 b vs b
     // ----------
+		cout << "*** Darwin 2x2 ***" <<endl;
 		srand(0);
-		Game g(2, 2);
+		Game g(2, 2, cout);
 		Creature steve = Creature(0, 0, WEST, 'b');
 		g.addCreature(0, 0, WEST, 'b', steve);
 		Creature john = Creature(1, 1, EAST, 'b');
@@ -188,8 +189,9 @@ int main () {
 	// ----------
     // darwin 12x12 b vs b
     // ----------
+		cout << "*** Darwin 12x12 ***" <<endl;
 		srand(0);
-		Game g(12, 12);
+		Game g(12, 12, cout);
 		Creature steve = Creature(0, 0, WEST, 'b');
 		g.addCreature(0, 0, WEST, 'b', steve);
 		Creature john = Creature(11, 11, EAST, 'b');
@@ -205,8 +207,9 @@ int main () {
 	// ----------
     // darwin 12x12 b vs r
     // ----------
+		cout << "*** Darwin 12x12 ***" <<endl;
 		srand(0);
-		Game g(12, 12);
+		Game g(12, 12, cout);
 		Creature steve = Creature(5, 9, NORTH, 'b');
 		g.addCreature(5, 9, NORTH, 'b', steve);
 		Creature john = Creature(1, 8, EAST, 'r');
@@ -222,8 +225,9 @@ int main () {
 	// ----------
     // darwin 15x15 b vs t
     // ----------
+		cout << "*** Darwin 15x15 ***" <<endl;
 		srand(0);
-		Game g(15, 15);
+		Game g(15, 15, cout);
 		Creature steve = Creature(5, 9, NORTH, 'b');
 		g.addCreature(5, 9, NORTH, 'b', steve);
 		Creature steve2 = Creature(8, 7, EAST, 'b');
@@ -252,8 +256,9 @@ try {
 	// ----------
     // darwin 15x15 b vs f
     // ----------
+		cout << "*** Darwin 15x15 ***" <<endl;
 		srand(0);
-		Game g(15, 15);
+		Game g(15, 15, cout);
 		Creature steve = Creature(5, 9, NORTH, 'b');
 		g.addCreature(5, 9, NORTH, 'b', steve);
 		Creature steve2 = Creature(8, 7, EAST, 'b');
@@ -283,8 +288,9 @@ try {
 	// ----------
     // darwin 15x15 b vs h
     // ----------
+		cout << "*** Darwin 15x15 ***" <<endl;
 		srand(0);
-		Game g(15, 15);
+		Game g(15, 15, cout);
 		Creature steve = Creature(5, 9, NORTH, 'b');
 		g.addCreature(5, 9, NORTH, 'b', steve);
 		Creature steve2 = Creature(8, 7, EAST, 'b');
@@ -331,7 +337,7 @@ try {
         Simulate 1000 moves.
         Print every 100th grid.
         */
-		Game g(72,72);
+		Game g(72,72, cout);
 		//food
 		int num = rand() % 5184;
 		int row = num / 72;
@@ -647,7 +653,7 @@ try {
         Best MUST outnumber ALL other species for the bonus pts.
         Print every 100th grid.
         */
-		Game g(72,72);
+		Game g(72,72, cout);
 		//food
 		int num = rand() % 5184;
 		int row = num / 72;
