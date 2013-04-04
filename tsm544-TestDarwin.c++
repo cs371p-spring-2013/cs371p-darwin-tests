@@ -326,6 +326,58 @@ struct TestGameMap : CppUnit::TestFixture {
     CPPUNIT_ASSERT(m.gameMap.find(point(3, 3))->second.creature.species == "rover");
     CPPUNIT_ASSERT(m.gameMap.find(point(3, 3))->second.creature.direction == East);
   }
+
+  void resetCreatureTurns01 () {
+    GameMap m(0, 0);
+    // No-op, just making sure we don't crash
+    m.resetCreatureTurns();
+  }
+
+  void resetCreatureTurns02 () {
+    GameMap m(1, 1);
+
+    Creature c ("hopper", North);
+    m.addCreature (c, 0, 0);
+    bool& test = m.gameMap.find(point(0, 0))->second.alreadyMovedThisTurn;
+    test = true;
+    CPPUNIT_ASSERT(test == true);
+    m.resetCreatureTurns();
+    CPPUNIT_ASSERT(test == false);
+  }
+
+  void resetCreatureTurns03 () {
+    GameMap m(5, 5);
+
+    Creature c0 ("hopper", North);
+    m.addCreature (c0, 0, 0);
+    bool& test0 = m.gameMap.find(point(0, 0))->second.alreadyMovedThisTurn;
+
+    Creature c1 ("food", North);
+    m.addCreature (c1, 1, 1);
+    bool& test1 = m.gameMap.find(point(1, 1))->second.alreadyMovedThisTurn;
+
+    Creature c2 ("rover", North);
+    m.addCreature (c2, 2, 2);
+    bool& test2 = m.gameMap.find(point(2, 2))->second.alreadyMovedThisTurn;
+
+    Creature c3 ("rover", North);
+    m.addCreature (c3, 3, 3);
+    bool& test3 = m.gameMap.find(point(3, 3))->second.alreadyMovedThisTurn;
+        
+    test0 = true;
+    test1 = true;
+    test2 = true;
+    test3 = true;
+    CPPUNIT_ASSERT(test0 == true);
+    CPPUNIT_ASSERT(test1 == true);
+    CPPUNIT_ASSERT(test2 == true);
+    CPPUNIT_ASSERT(test3 == true);
+    m.resetCreatureTurns();
+    CPPUNIT_ASSERT(test0 == false);
+    CPPUNIT_ASSERT(test1 == false);
+    CPPUNIT_ASSERT(test2 == false);
+    CPPUNIT_ASSERT(test3 == false);
+  }
   
   //--------------------------------
   // Test Suite
@@ -338,6 +390,10 @@ struct TestGameMap : CppUnit::TestFixture {
   CPPUNIT_TEST(addCreature02);
   CPPUNIT_TEST(addCreature03);
   CPPUNIT_TEST(addCreature04);
+
+  CPPUNIT_TEST(resetCreatureTurns01);
+  CPPUNIT_TEST(resetCreatureTurns02);
+  CPPUNIT_TEST(resetCreatureTurns03);
   
   CPPUNIT_TEST_SUITE_END();
 };
