@@ -1,0 +1,25 @@
+g++ -pedantic -std=c++0x -Wall Darwin.c++ TestDarwin.c++ -o TestDarwin -lcppunit -ldl
+valgrind TestDarwin
+TestDarwin.c++
+.............................................
+
+
+OK (45 tests)
+
+
+Done.
+==24761==
+==24761== HEAP SUMMARY:
+==24761==     in use at exit: 122,880 bytes in 6 blocks
+==24761==   total heap usage: 2,671 allocs, 2,665 frees, 466,297 bytes allocated
+==24761==
+==24761== LEAK SUMMARY:
+==24761==    definitely lost: 0 bytes in 0 blocks
+==24761==    indirectly lost: 0 bytes in 0 blocks
+==24761==      possibly lost: 0 bytes in 0 blocks
+==24761==    still reachable: 122,880 bytes in 6 blocks
+==24761==         suppressed: 0 bytes in 0 blocks
+==24761== Rerun with --leak-check=full to see details of leaked memory
+==24761==
+==24761== For counts of detected and suppressed errors, rerun with: -v
+==24761== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 4)
