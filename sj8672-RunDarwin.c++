@@ -113,20 +113,6 @@ int main () {
     trap.add_instruction("infect");
     trap.add_instruction("go 0");
     
-    // ----
-    // best
-    // ----
-    Species best('b');
-    best.add_instruction("if_empty 6");
-    best.add_instruction("if_enemy 4");
-    best.add_instruction("left");
-    best.add_instruction("go 0");
-    best.add_instruction("infect");
-    best.add_instruction("go 0");
-    best.add_instruction("hop");
-    best.add_instruction("go 0");
-    
-
     // ----------
     // darwin 8x8
     // ----------
