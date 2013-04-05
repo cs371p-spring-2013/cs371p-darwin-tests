@@ -84,7 +84,7 @@ struct TestDarwin : CppUnit::TestFixture {
 		assert(test1.map[0].size() ==1);
 		std::ostringstream w;		
 		test1.printMap(w);
-		assert(w.str() == " 0\n0.\n");
+		assert(w.str() == "  0\n0 .\n");
 	}
 
 	void testprintMap2(){
@@ -94,7 +94,7 @@ struct TestDarwin : CppUnit::TestFixture {
 		assert(test2.map[0].size() == 2);
 		std::ostringstream w;		
 		test2.printMap(w);
-		assert(w.str() == " 01\n0..\n");
+		assert(w.str() == "  01\n0 ..\n");
 	}
 
 	void testprintMap3(){
@@ -104,7 +104,7 @@ struct TestDarwin : CppUnit::TestFixture {
 		assert(test3.map[0].size() == 11);
 		std::ostringstream w;		
 		test3.printMap(w);
-		assert(w.str() == " 01234567890\n0...........\n1...........\n2...........\n3...........\n4...........\n5...........\n6...........\n");	
+		assert(w.str() == "  01234567890\n0 ...........\n1 ...........\n2 ...........\n3 ...........\n4 ...........\n5 ...........\n6 ...........\n");	
 	}
 
 	// processCommand
@@ -125,7 +125,7 @@ struct TestDarwin : CppUnit::TestFixture {
 		assert(puppets[1].location[0] == 0);
 		assert(puppets[1].location[1] == 1);
 
-		assert(w.str() == " 0123\n0.h..\n1....\n2....\n3..h.\n");
+		assert(w.str() == "  0123\n0 .h..\n1 ....\n2 ....\n3 ..h.\n");
 	}
 	void testprocessCommand2(){
 		Darwin test;
@@ -137,20 +137,20 @@ struct TestDarwin : CppUnit::TestFixture {
 		test.newCreature(puppets, HOPPER, 3, 3, 0);
 		test.newCreature(puppets, HOPPER, 1, 1, 1);
 		test.printMap(w);
-		assert(w.str() == " 0123\n0r...\n1.h..\n2....\n3...h\n");
+		assert(w.str() == "  0123\n0 r...\n1 .h..\n2 ....\n3 ...h\n");
 		w.str("");
 		test.processCommand(puppets[0], puppets);
 		test.processCommand(puppets[2], puppets);
 		test.processCommand(puppets[1], puppets);
 		test.resetCreatures(puppets);
 		test.printMap(w);
-		assert(w.str() == " 0123\n0.r..\n1.h..\n2....\n3..h.\n");
+		assert(w.str() == "  0123\n0 .r..\n1 .h..\n2 ....\n3 ..h.\n");
 		w.str("");
 		test.processCommand(puppets[0], puppets);
 		test.processCommand(puppets[2], puppets);
 		test.processCommand(puppets[1], puppets);
 		test.printMap(w);
-		assert(w.str() == " 0123\n0.hr.\n1....\n2....\n3.h..\n");
+		assert(w.str() == "  0123\n0 .hr.\n1 ....\n2 ....\n3 .h..\n");
 	}
 	void testprocessCommand3(){
 		Darwin test;
@@ -169,7 +169,7 @@ struct TestDarwin : CppUnit::TestFixture {
 		test.processCommand(puppets[3], puppets);
 		test.processCommand(puppets[1], puppets);
 		test.printMap(w);
-		assert(w.str() == " 01234\n0.r...\n1.h...\n2.....\n3..tt.\n4.....\n");
+		assert(w.str() == "  01234\n0 .r...\n1 .h...\n2 .....\n3 ..tt.\n4 .....\n");
 		w.str("");
 		test.resetCreatures(puppets);
 		test.processCommand(puppets[0], puppets);
@@ -177,8 +177,28 @@ struct TestDarwin : CppUnit::TestFixture {
 		test.processCommand(puppets[3], puppets);
 		test.processCommand(puppets[1], puppets);
 		test.printMap(w);
-		assert(w.str() == " 01234\n0.hr..\n1.....\n2.....\n3..tt.\n4.....\n");
+		assert(w.str() == "  01234\n0 .hr..\n1 .....\n2 .....\n3 ..tt.\n4 .....\n");
+		w.str("");
 	}
+
+	void testprocessCommand4(){
+		Darwin test;
+		test.createMap(4,4);
+		vector<Creature> puppets;
+		std::ostringstream w;
+
+		test.newCreature(puppets, TRAP, 0, 0, 2); //facing right
+		test.newCreature(puppets, FOOD, 3, 3, 0); //facing left
+
+		test.processCommand(puppets[0], puppets);
+		test.processCommand(puppets[1], puppets);
+
+		test.printMap(w);
+		// cout << w.str();
+		assert(w.str() == "  0123\n0 t...\n1 ....\n2 ....\n3 ...f\n");
+		w.str("");
+	}
+	
 
 	// runMap
 	void testrunMap1() {
@@ -194,7 +214,7 @@ struct TestDarwin : CppUnit::TestFixture {
 		test.runMap(puppets);
 		test.printMap(w);
 		// to get tests passing for now
-		assert(w.str() == " 0123\n0.h..\n1....\n2....\n3..h.\n");
+		assert(w.str() == "  0123\n0 .h..\n1 ....\n2 ....\n3 ..h.\n");
 		// assert(w.str() == " 0123\n0....\n1....\n2....\n3..h.\n");
 		assert(true);
 	}
@@ -212,7 +232,7 @@ struct TestDarwin : CppUnit::TestFixture {
 		test.runMap(puppets);
 		test.runMap(puppets);
 		test.printMap(w);
-		assert(w.str() == " 0123\n0.hr.\n1....\n2....\n3.h..\n");
+		assert(w.str() == "  0123\n0 .hr.\n1 ....\n2 ....\n3 .h..\n");
 	}
 
 	void testrunMap3(){
@@ -220,16 +240,24 @@ struct TestDarwin : CppUnit::TestFixture {
 		test.createMap(5,5);
 		vector<Creature> puppets;
 		std::ostringstream w;
-
-		test.newCreature(puppets, ROVER, 0, 0, 2);
-		test.newCreature(puppets, HOPPER, 3, 3, 0);
-		test.newCreature(puppets, HOPPER, 1, 1, 1);
-		test.newCreature(puppets, TRAP, 3, 2, 2);
-
+		
+		test.newCreature(puppets, HOPPER, 1, 1, 1); //facing up
+		test.newCreature(puppets, HOPPER, 3, 3, 0); // facing down
+		test.newCreature(puppets, TRAP, 3, 2, 2); // right
+		test.printMap(w);
+		// cout << w.str();
+		w.str("");
 		test.runMap(puppets);
+		assert(puppets[2].direction == 2); //trap facing up
+				test.printMap(w);
+		// cout << w.str();
+		w.str("");
 		test.runMap(puppets);
 		test.printMap(w);
-		assert(w.str() == " 01234\n0.hr..\n1.....\n2.....\n3..tt.\n4.....\n");
+		// cout << w.str();
+		
+		assert(w.str() == "  01234\n0 .h...\n1 .....\n2 .....\n3 ..tt.\n4 .....\n");
+		w.str("");
 	}
 
 	// resetCreatures
@@ -699,59 +727,6 @@ struct TestDarwin : CppUnit::TestFixture {
 		assert(test.hop(puppets[0]) == true);
 	}
 
-	// infect
-	void testinfect1(){
-		Darwin test1;
-		test1.createMap(1,2);
-		vector< Creature > puppets;
-		std::ostringstream w;		
-
-		test1.newCreature(puppets, ROVER, 0, 0, 2);
-		test1.newCreature(puppets, FOOD, 0, 1, 0);
-		// test1.printMap(w);		
-
-		assert (true);
-		assert(puppets.size() == 2);
-		assert(test1.ifenemy(puppets[0]) == true);
-		assert(test1.infect(puppets[0]) == true);
-	}
-	void testinfect2(){
-		Darwin test;
-		test.createMap(5,5);
-		vector< Creature > puppets;
-		std::ostringstream w;	
-
-		test.newCreature(puppets, HOPPER, 0, 0, 2);
-		test.newCreature(puppets, FOOD, 0, 1, 3);
-		test.newCreature(puppets, ROVER, 1, 0, 1);
-		// test.printMap(w);
-		
-		assert(puppets.size() == 3);
-		assert(test.ifempty(puppets[1]) == true);
-		assert(test.ifempty(puppets[0]) == false);
-		assert(test.ifempty(puppets[2]) == false);
-		assert(test.infect(puppets[2]) == true);
-	}
-	void testinfect3(){
-		Darwin test3;
-		test3.createMap(5,5);
-		vector< Creature > puppets;
-		std::ostringstream w;		
-
-		test3.newCreature(puppets, HOPPER, 0, 0, 2);
-		test3.newCreature(puppets, FOOD, 0, 1, 0);
-		test3.newCreature(puppets, ROVER, 1, 1, 1);
-		test3.newCreature(puppets, ROVER, 1, 0, 1);
-		// test3.printMap(w);		
-
-		assert (true);
-		assert(puppets.size() == 4);
-		assert(test3.ifenemy(puppets[0]) == true);
-		assert(test3.ifenemy(puppets[2]) == true);
-		assert(test3.ifenemy(puppets[3]) == true);
-		assert(test3.infect(puppets[2]) == true);
-		assert(test3.infect(puppets[3]) == true);
-	}
 
 	// suite
 	CPPUNIT_TEST_SUITE(TestDarwin);
@@ -770,6 +745,7 @@ struct TestDarwin : CppUnit::TestFixture {
 	CPPUNIT_TEST(testprocessCommand1);
 	CPPUNIT_TEST(testprocessCommand2);
 	CPPUNIT_TEST(testprocessCommand3);
+	CPPUNIT_TEST(testprocessCommand4);
 	CPPUNIT_TEST(testnewCreature1);
 	CPPUNIT_TEST(testnewCreature2);
 	CPPUNIT_TEST(testnewCreature3);
@@ -791,12 +767,7 @@ struct TestDarwin : CppUnit::TestFixture {
 	CPPUNIT_TEST(testinbounds1);
 	CPPUNIT_TEST(testinbounds2);
 	CPPUNIT_TEST(testinbounds3);
-	CPPUNIT_TEST(testifempty1);
-	CPPUNIT_TEST(testifempty2);
-	CPPUNIT_TEST(testifempty3);
 	CPPUNIT_TEST(testifrandom1);
-	// CPPUNIT_TEST(testifrandom2);
-	// CPPUNIT_TEST(testifrandom3);
 	CPPUNIT_TEST(testleft1);
 	CPPUNIT_TEST(testleft2);
 	CPPUNIT_TEST(testleft3);
@@ -809,9 +780,6 @@ struct TestDarwin : CppUnit::TestFixture {
 	CPPUNIT_TEST(testhop2);
 	CPPUNIT_TEST(testhop3);
 	CPPUNIT_TEST(testhop4);
-	CPPUNIT_TEST(testinfect1);
-	CPPUNIT_TEST(testinfect2);
-	CPPUNIT_TEST(testinfect3);
 	CPPUNIT_TEST_SUITE_END();};
 
 int main() {

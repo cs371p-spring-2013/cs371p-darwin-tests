@@ -88,12 +88,11 @@ int main () {
      4: go 0
     */
 
-
-
      // darwin 4x4
     try {
         cout << "*** Darwin 4x4 ***" << endl;
         Darwin test;
+        srand(0);
 
         test.createMap(4,4);
         vector< Creature > creatures;
@@ -101,9 +100,11 @@ int main () {
         test.newCreature(creatures, HOPPER, 3, 3, 0);
         test.newCreature(creatures, HOPPER, 1, 1, 1);
         
-        for (int i = 0; i < 6; i++){
-            cout << "Turn = "<< i << endl;
+        cout << "Turn = 0." << endl;
+        test.printMap(cout);
 
+        for (int i = 0; i < 5; i++){
+            cout << "Turn = "<< i + 1 << "." << endl;
             test.runMap(creatures);
             test.printMap(cout);
 
@@ -120,6 +121,7 @@ int main () {
     try {
         cout << "*** Darwin 4x4 ***" << endl;
         Darwin test;
+        srand(0);
 
         test.createMap(4,4);
         vector< Creature > creatures;
@@ -128,9 +130,11 @@ int main () {
         test.newCreature(creatures, HOPPER, 3, 3, 0);
         test.newCreature(creatures, HOPPER, 1, 1, 1);
         
-        for (int i = 0; i < 6; i++){
-            cout << "Turn = "<< i << endl;
+        cout << "Turn = 0." << endl;
+        test.printMap(cout);
 
+        for (int i = 0; i < 5; i++){
+            cout << "Turn = "<< i + 1 << "." << endl;
             test.runMap(creatures);
             test.printMap(cout);
 
@@ -146,6 +150,7 @@ int main () {
     try {
         cout << "*** Darwin 4x4 ***" << endl;
         Darwin test;
+        srand(0);
 
         test.createMap(4,4);
         vector< Creature > creatures;
@@ -155,9 +160,11 @@ int main () {
         test.newCreature(creatures, HOPPER, 1, 1, 1);
         test.newCreature(creatures, TRAP, 3, 2, 2);
         
-        for (int i = 0; i < 6; i++){
-            cout << "Turn = "<< i << endl;
+        cout << "Turn = 0." << endl;
+        test.printMap(cout);
 
+        for (int i = 0; i < 5; i++){
+            cout << "Turn = "<< i + 1 << "." << endl;
             test.runMap(creatures);
             test.printMap(cout);
 
@@ -174,6 +181,7 @@ int main () {
     try {
         cout << "*** Darwin 10x10 ***" << endl;
         Darwin test;
+        srand(0);
 
         test.createMap(10,10);
         vector< Creature > creatures;
@@ -191,8 +199,12 @@ int main () {
         test.newCreature(creatures, HOPPER, 8, 2, 1);
         test.newCreature(creatures, TRAP, 9, 1, 2);
         
-        for (int i = 0; i < 6; i++){
-            cout << "Turn = "<< i << endl;
+        cout << "Turn = 0." << endl;
+        test.printMap(cout);
+        cout << endl;
+
+        for (int i = 0; i < 5; i++){
+            cout << "Turn = "<< i + 1 << "." << endl;
 
             test.runMap(creatures);
             test.printMap(cout);
@@ -206,7 +218,7 @@ int main () {
         assert(false);}
 
     // ----------
-    // darwin 8x8
+    // darwin 8x8                                                                                                                                                                
     // ----------
 
     try {
@@ -234,8 +246,12 @@ int main () {
         eights.newCreature(creatures, HOPPER, 4, 3, 0);
         eights.newCreature(creatures, FOOD, 7, 7, 1);
         
-        for (int i = 0; i < 6; i++){
-            cout << "Turn = "<< i << endl;
+        cout << "Turn = 0." << endl;
+        eights.printMap(cout);
+        cout << endl;
+
+        for (int i = 0; i < 5; i++){
+            cout << "Turn = "<< i + 1 << "." << endl;
 
             eights.runMap(creatures);
             eights.printMap(cout);
@@ -274,9 +290,12 @@ int main () {
         round2.newCreature(creatures, ROVER, 5, 4, 1);
         round2.newCreature(creatures, TRAP, 6, 8, 0);
 
-        
-        for (int i = 0; i < 6; i++){
-            cout << "Turn = "<< i << endl;
+        cout << "Turn = 0." << endl;
+        round2.printMap(cout);
+        cout << endl;
+
+        for (int i = 0; i < 5; i++){
+            cout << "Turn = "<< i + 1 << endl;
 
             round2.runMap(creatures);
             round2.printMap(cout);
@@ -289,28 +308,28 @@ int main () {
     catch (const out_of_range&) {
         assert(false);}
 
-    // // ------------
-    // // darwin 72x72
-    // // without best
-    // // ------------
+    // ------------
+    // darwin 72x72
+    // without best
+    // ------------
 
     try {
         cout << "*** Darwin 72x72 without Best ***" << endl;
         srand(0);
-        /*
-        Randomly place the following creatures facing randomly.
-        Call rand(), mod it with 5184 (72x72), and use that for the position
-        in a row-major order grid.
-        Call rand() again, mod it with 4 and use that for it's direction with
-        the ordering: west, north, east, south.
-        Do that for each kind of creature.
-        10 Food
-        10 Hopper
-        10 Rover
-        10 Trap
-        Simulate 1000 moves.
-        Print every 100th grid.
-        */
+    //     /*
+    //     Randomly place the following creatures facing randomly.
+    //     Call rand(), mod it with 5184 (72x72), and use that for the position
+    //     in a row-major order grid.
+    //     Call rand() again, mod it with 4 and use that for it's direction with
+    //     the ordering: west, north, east, south.
+    //     Do that for each kind of creature.
+    //     10 Food
+    //     10 Hopper
+    //     10 Rover
+    //     10 Trap
+    //     Simulate 1000 moves.
+    //     Print every 100th grid.
+    //     */
         Darwin seventytwonob;
 
         seventytwonob.createMap(72, 72);
@@ -320,50 +339,49 @@ int main () {
             int pos = (rand() % 5184);
             int r = pos / 72;
             int c = pos % 72;
-            int dir = (rand() % 4);
-            seventytwonob.newCreature(creatures, FOOD, r, c, dir);
+            seventytwonob.newCreature(creatures, FOOD, r, c, rand() %4);
         }
         
         for (int i = 0; i < 10; i ++) {
             int pos = (rand() % 5184);
             int r = pos / 72;
             int c = pos % 72;
-            int dir = (rand() % 4);
-            seventytwonob.newCreature(creatures, HOPPER, r, c, dir);
+            seventytwonob.newCreature(creatures, HOPPER, r, c, rand() %4);
         }
 
         for (int i = 0; i < 10; i ++) {
             int pos = (rand() % 5184);
             int r = pos / 72;
             int c = pos % 72;
-            int dir = (rand() % 4);
-            seventytwonob.newCreature(creatures, ROVER, r, c, dir);
+            seventytwonob.newCreature(creatures, ROVER, r, c, rand() %4);
         }
 
         for (int i = 0; i < 10; i ++) {
             int pos = (rand() % 5184);
             int r = pos / 72;
             int c = pos % 72;
-            int dir = (rand() % 4);
-            seventytwonob.newCreature(creatures, TRAP, r, c, dir);
+            seventytwonob.newCreature(creatures, TRAP, r, c, rand() %4);
         }
 
-        for (int i = 0; i < 1001; i++){
+        cout << "Turn = 0." << endl;
+        seventytwonob.printMap(cout);
+        cout << endl;
 
-            seventytwonob.runMap(creatures);
-            if (i % 100 == 0){
-                cout << "Turn = " << i << endl;
+        for (int i = 1; i < 1001; i++){
+
+            seventytwonob.runMap(creatures);       
+            if ( (i  % 100) == 0) {
+                cout << "\nTurn = " << i  << "." << endl;
                 seventytwonob.printMap(cout);
-                cout << endl;
             }
-
-            
+         }   
         }
-    }
+    
     
     catch (const invalid_argument&) {
         assert(false);}
     catch (const out_of_range&) {
         assert(false);}
+
     return 0;}
 
