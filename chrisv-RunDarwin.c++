@@ -112,7 +112,7 @@ int main () {
     trap.addInstruction(go, 0);
     trap.addInstruction(infect);
     trap.addInstruction(go, 0);
-
+    
     // ----------
     // darwin 8x8
     // ----------
