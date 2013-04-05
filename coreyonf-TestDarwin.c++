@@ -85,6 +85,16 @@ struct TestDarwin : CppUnit::TestFixture {
 		CPPUNIT_ASSERT(i.target() == 1);
 	}
 	
+	void test_instruction_4() {
+		try {
+			//bad instruction
+			Instruction i(left, 1);
+			CPPUNIT_ASSERT(false);
+		} catch (...) {
+			CPPUNIT_ASSERT(true);
+		}
+	}
+	
 	void test_instruction_3() {
 		Instruction i(hop, -1);
 		CPPUNIT_ASSERT(i.target() == -1);
@@ -102,6 +112,19 @@ struct TestDarwin : CppUnit::TestFixture {
     	s.addInstruction(go, 0);
     	CPPUNIT_ASSERT(s.getLine(0).target() == 0);
 	}
+	
+	
+	void test_species_4() {
+		try {
+			Species s(HOPPER);
+			//bad instruction
+			s.addInstruction(left, 1);
+			CPPUNIT_ASSERT(false);
+		} catch (...) {
+			CPPUNIT_ASSERT(true);
+		}
+	}
+	
 	
 	void test_species_3 () {
     	Species s(HOPPER);
@@ -244,6 +267,27 @@ struct TestDarwin : CppUnit::TestFixture {
 		CPPUNIT_ASSERT(darwin._board.at(0).at(1) == 2);
 		CPPUNIT_ASSERT(darwin._creatures.at(darwin._board.at(0).at(1)).type() == ROVER);
 	}
+	
+	//test bad direction
+	void test_creature_17() {
+		try {
+			Game darwin(1,1);
+			Species s(HOPPER);
+			Species r(BEST);
+			Creature c(&s, 4,1,1, &darwin);
+			CPPUNIT_ASSERT(false);
+		} catch (...) {}
+	}
+	//test bad direction
+	void test_creature_18() {
+		try {
+			Game darwin(1,1);
+			Species s(HOPPER);
+			Species r(BEST);
+			Creature c(&s, -1,1,1, &darwin);
+			CPPUNIT_ASSERT(false);
+		} catch (...) {}
+	}
 
     // -----
     // suite
@@ -259,9 +303,11 @@ struct TestDarwin : CppUnit::TestFixture {
     CPPUNIT_TEST(test_instruction_1);
     CPPUNIT_TEST(test_instruction_2);
     CPPUNIT_TEST(test_instruction_3);
+    CPPUNIT_TEST(test_instruction_4);
     CPPUNIT_TEST(test_species_1);
     CPPUNIT_TEST(test_species_2);
     CPPUNIT_TEST(test_species_3);
+    CPPUNIT_TEST(test_species_4);
     CPPUNIT_TEST(test_creature_1);
     CPPUNIT_TEST(test_creature_2);
     CPPUNIT_TEST(test_creature_3);
@@ -278,6 +324,8 @@ struct TestDarwin : CppUnit::TestFixture {
     CPPUNIT_TEST(test_creature_14);
     CPPUNIT_TEST(test_creature_15);
     CPPUNIT_TEST(test_creature_16);
+    CPPUNIT_TEST(test_creature_17);
+    CPPUNIT_TEST(test_creature_18);
     CPPUNIT_TEST_SUITE_END();
 };
 

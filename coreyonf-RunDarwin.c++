@@ -35,6 +35,7 @@ using namespace std;
 // ----
 // main
 // ----
+bool debug = 0;
 
 int main () {
     using namespace std;
@@ -134,7 +135,7 @@ int main () {
 				darwin.addCreature(HOPPER, 0,3, UP);
 				darwin.addCreature(HOPPER, 3, 0, DOWN);
 				darwin.addCreature(FOOD, 3,3, UP);
-				darwin.run(5, 1);
+				if (!debug) darwin.run(5, 1);
 				
         }
     catch (const invalid_argument&) {
@@ -153,7 +154,7 @@ int main () {
 				darwin.addCreature(BEST, 0,3, UP);
 				darwin.addCreature(BEST, 3, 0, DOWN);
 				darwin.addCreature(FOOD, 3,3, UP);
-				darwin.run(5, 1);
+				if (!debug) darwin.run(5, 1);
 				
         }
     catch (const invalid_argument&) {
@@ -172,7 +173,7 @@ int main () {
 				darwin.addCreature(TRAP, 0,3, UP);
 				darwin.addCreature(ROVER, 3, 0, DOWN);
 				darwin.addCreature(FOOD, 3,3, UP);
-				darwin.run(100, 50);
+				if (!debug) darwin.run(100, 50);
 				
         }
     catch (const invalid_argument&) {
@@ -206,7 +207,7 @@ int main () {
 				darwin.addCreature(HOPPER, 4,4, DOWN);
 				darwin.addCreature(HOPPER, 4,3, LEFT);
 				darwin.addCreature(FOOD, 7,7, UP);
-				darwin.run(5, 1);
+				if (!debug) darwin.run(5, 1);
 				
         }
     catch (const invalid_argument&) {
@@ -238,7 +239,7 @@ int main () {
 		darwin.addCreature(HOPPER, 3,2, RIGHT);
 		darwin.addCreature(ROVER, 5, 4, UP);
 		darwin.addCreature(TRAP, 6,8, LEFT);
-		darwin.run(5, 1);
+		if (!debug) darwin.run(5, 1);
         
         }
     catch (const invalid_argument&) {
@@ -269,21 +270,37 @@ int main () {
         Print every 100th grid.
         */
         Game darwin(72,72);
+		int t, d;
         while (darwin.num_creatures() < 10) {
-        	darwin.addCreature(FOOD, rand()%72, rand()%72, rand()%4);
+			t = rand()%5184;
+			d = rand()%4;
+			if (d == 0) d = 3;
+			else d -= 1;
+        	darwin.addCreature(FOOD, t/72, t%72, d);
         }
-        
         while (darwin.num_creatures() < 20) {
-        	darwin.addCreature(HOPPER, rand()%72, rand()%72, rand()%4);
+			t = rand()%5184;
+			d = rand()%4;
+			if (d == 0) d = 3;
+			else d -= 1;
+        	darwin.addCreature(HOPPER, t/72, t%72, d);
         }
         while (darwin.num_creatures() < 30) {
-        	darwin.addCreature(ROVER, rand()%72, rand()%72, rand()%4);
+			t = rand()%5184;
+			d = rand()%4;
+			if (d == 0) d = 3;
+			else d -= 1;
+        	darwin.addCreature(ROVER, t/72, t%72, d);
         }
         while (darwin.num_creatures() < 40) {
-        	darwin.addCreature(TRAP, rand()%72, rand()%72, rand()%4);
+			t = rand()%5184;
+			d = rand()%4;
+			if (d == 0) d = 3;
+			else d -= 1;
+        	darwin.addCreature(TRAP, t/72, t%72, d);
         }
         
-        //darwin.run(1000, 100);
+        darwin.run(1000, 100);
     }
     catch (const invalid_argument&) {
     	cout << "Invalid argument" << endl;
@@ -323,7 +340,7 @@ int main () {
         	darwin.addCreature(TRAP, rand()%72, rand()%72, rand()%4);
         }
         
-        darwin.run(100, 10);
+        if (!debug) darwin.run(100, 10);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -361,7 +378,7 @@ int main () {
         	darwin.addCreature(TRAP, rand()%72, rand()%72, rand()%4);
         }
         
-        darwin.run(100, 10);
+        if (!debug) darwin.run(100, 10);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -408,7 +425,7 @@ int main () {
         while (darwin.num_creatures() < 50) {
         	darwin.addCreature(BEST, rand()%72, rand()%72, rand()%4);
         }
-        darwin.run(1000, 100);
+        if (!debug) darwin.run(1000, 100);
         
         }
     catch (const invalid_argument&) {
@@ -451,7 +468,7 @@ int main () {
         while (darwin.num_creatures() < 50) {
         	darwin.addCreature(BEST, rand()%72, rand()%72, rand()%4);
         }
-        darwin.run(1000, 100);
+        if (!debug) darwin.run(1000, 100);
         
         }
     catch (const invalid_argument&) {
@@ -494,7 +511,7 @@ int main () {
         while (darwin.num_creatures() < 50) {
         	darwin.addCreature(BEST, rand()%72, rand()%72, rand()%4);
         }
-        darwin.run(1000, 100);
+        if (!debug) darwin.run(1000, 100);
         
         }
     catch (const invalid_argument&) {
@@ -524,7 +541,7 @@ int main () {
         while (darwin.num_creatures() < 50) {
         	darwin.addCreature(BEST, rand()%72, rand()%72, rand()%4);
         }
-        darwin.run(1000, -1);
+        if (!debug) darwin.run(100, -1);
 		    
 		    }
 		catch (const invalid_argument&) {
@@ -557,7 +574,7 @@ int main () {
 		    while (darwin.num_creatures() < 100) {
         	darwin.addCreature(BEST, rand()%72, rand()%72, rand()%4);
         }
-		    darwin.run(1000, -1);
+		    if (!debug) darwin.run(100, -1);
 		    
 		    }
 		catch (const invalid_argument&) {
