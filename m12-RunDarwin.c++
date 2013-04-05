@@ -227,6 +227,40 @@ int main () {
         Best MUST outnumber ALL other species for the bonus pts.
         Print every 100th grid.
         */
+		int n = 72;
+		int m = 72;
+		Game game(n, m);
+		int mod = n*m;
+		for(int f = 0; f < 10; ++f) {
+			int pos = rand() % mod;
+			int dir = rand() % 4;
+			game.addCreature(Creature(Food(), Direction(dir)), 'f', (pos/n), (pos%n));
+		}
+
+		for(int h = 0; h < 10; ++h) {
+			int pos = rand() % mod;
+			int dir = rand() % 4;
+			game.addCreature(Creature(Hopper(), Direction(dir)), 'h', (pos/n), (pos%n));
+		}
+
+		for(int r = 0; r < 10; ++r) {
+			int pos = rand() % mod;
+			int dir = rand() % 4;
+			game.addCreature(Creature(Rover(),Direction(dir)), 'r', (pos/n), (pos%n));
+		}
+
+		for(int t = 0; t < 10; ++t) {
+			int pos = rand() % mod;
+			int dir = rand() % 4;
+			game.addCreature(Creature(Trap(),Direction(dir)), 't', (pos/n), (pos%n));
+		}
+
+		for(int t = 0; t < 10; ++t) {
+			int pos = rand() % mod;
+			int dir = rand() % 4;
+			game.addCreature(Creature(Best(),Direction(dir)), 'b', (pos/n), (pos%n));
+		}
+		game.simulate(1000, cout, 100);
         }
     catch (const invalid_argument&) {
         assert(false);}

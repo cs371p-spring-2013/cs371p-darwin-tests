@@ -273,6 +273,58 @@ struct TestDarwin : CppUnit::TestFixture {
 		CPPUNIT_ASSERT(t._program[4].second == 0);
 	}
 	
+	// ----------------------
+	// test_Best_constructor
+	// ----------------------
+	
+	void test_Best_constructor_1() {
+		Best b;
+		CPPUNIT_ASSERT(b._name == 'b');
+		CPPUNIT_ASSERT(b._program.size() == 17);
+	}
+
+	void test_Best_constructor_2() {
+		Best b;
+		CPPUNIT_ASSERT(b._program[0].first == IF_ENEMY);
+		CPPUNIT_ASSERT(b._program[1].first == IF_EMPTY);
+		CPPUNIT_ASSERT(b._program[2].first == IF_RANDOM);
+		CPPUNIT_ASSERT(b._program[3].first == IF_RANDOM);
+		CPPUNIT_ASSERT(b._program[4].first == LEFT);
+		CPPUNIT_ASSERT(b._program[5].first == GO);
+		CPPUNIT_ASSERT(b._program[6].first == RIGHT);
+		CPPUNIT_ASSERT(b._program[7].first == GO);
+		CPPUNIT_ASSERT(b._program[8].first == HOP);
+		CPPUNIT_ASSERT(b._program[9].first == GO);
+		CPPUNIT_ASSERT(b._program[10].first == INFECT);
+		CPPUNIT_ASSERT(b._program[11].first == GO);
+		CPPUNIT_ASSERT(b._program[12].first == IF_ENEMY);
+		CPPUNIT_ASSERT(b._program[13].first == LEFT);
+		CPPUNIT_ASSERT(b._program[14].first == GO);
+		CPPUNIT_ASSERT(b._program[15].first == INFECT);
+		CPPUNIT_ASSERT(b._program[16].first == GO);
+	}
+
+	void test_Best_constructor_3() {
+		Best b;
+		CPPUNIT_ASSERT(b._program[0].second == 10);
+		CPPUNIT_ASSERT(b._program[1].second == 8);
+		CPPUNIT_ASSERT(b._program[2].second == 12);
+		CPPUNIT_ASSERT(b._program[3].second == 4);
+		CPPUNIT_ASSERT(b._program[4].second == -1);
+		CPPUNIT_ASSERT(b._program[5].second == 0);
+		CPPUNIT_ASSERT(b._program[6].second == -1);
+		CPPUNIT_ASSERT(b._program[7].second == 0);
+		CPPUNIT_ASSERT(b._program[8].second == -1);
+		CPPUNIT_ASSERT(b._program[9].second == 0);
+		CPPUNIT_ASSERT(b._program[10].second == -1);
+		CPPUNIT_ASSERT(b._program[11].second == 0);
+		CPPUNIT_ASSERT(b._program[12].second == 15);
+		CPPUNIT_ASSERT(b._program[13].second == -1);
+		CPPUNIT_ASSERT(b._program[14].second == 0);
+		CPPUNIT_ASSERT(b._program[15].second == -1);
+		CPPUNIT_ASSERT(b._program[16].second == 0);
+	}
+
 	// -------------------------
 	// test_Creature_constructor
 	// -------------------------
@@ -1339,6 +1391,9 @@ struct TestDarwin : CppUnit::TestFixture {
     CPPUNIT_TEST(test_Trap_constructor_1);
     CPPUNIT_TEST(test_Trap_constructor_2);
     CPPUNIT_TEST(test_Trap_constructor_3);
+    CPPUNIT_TEST(test_Best_constructor_1);
+    CPPUNIT_TEST(test_Best_constructor_2);
+    CPPUNIT_TEST(test_Best_constructor_3);
     CPPUNIT_TEST(test_Creature_constructor_1);
     CPPUNIT_TEST(test_Creature_constructor_2);
     CPPUNIT_TEST(test_Creature_constructor_3);
