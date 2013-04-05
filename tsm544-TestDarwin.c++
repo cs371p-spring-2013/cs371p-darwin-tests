@@ -579,27 +579,145 @@ struct TestDarwin : CppUnit::TestFixture {
   }
 
   void addCreature01 () {
+    ostringstream w;
+    Darwin d(1, 1, w);
+    Creature c0("hopper", North);
+
+    d.addCreature(c0, 0, 0);
+
+    CPPUNIT_ASSERT(d.map.gameMap.find(point(0, 0)) != d.map.gameMap.end());
     
+    CreatureData& test0 = d.map.gameMap.find(point(0, 0))->second;
+
+    CPPUNIT_ASSERT(test0.creature.species == "hopper");
+    CPPUNIT_ASSERT(test0.creature.direction == North);
+    CPPUNIT_ASSERT(test0.x == 0);
+    CPPUNIT_ASSERT(test0.y == 0);
+    CPPUNIT_ASSERT(!test0.alreadyMovedThisTurn);
   }
 
   void addCreature02 () {
+    ostringstream w;
+    Darwin d (1, 1, w);
+    Creature c0 ("hopper", North);
+    Creature c1 ("rover", South);
 
+    d.addCreature(c0, 0, 0);
+    d.addCreature(c1, 0, 0);
+
+    CPPUNIT_ASSERT(d.map.gameMap.find(point(0, 0)) != d.map.gameMap.end());
+    
+    CreatureData& test0 = d.map.gameMap.find(point(0, 0))->second;
+
+    CPPUNIT_ASSERT(test0.creature.species == "hopper");
+    CPPUNIT_ASSERT(test0.creature.direction == North);
+    CPPUNIT_ASSERT(test0.x == 0);
+    CPPUNIT_ASSERT(test0.y == 0);
+    CPPUNIT_ASSERT(!test0.alreadyMovedThisTurn);
   }
 
   void addCreature03 () {
+    ostringstream w;
+    Darwin d (4, 4, w);
+    Creature c0 ("hopper", North);
+    Creature c1 ("rover", South);
+    Creature c2 ("food", East);
+    Creature c3 ("trap", West);
 
+    d.addCreature(c0, 0, 0);
+    d.addCreature(c1, 1, 1);
+    d.addCreature(c2, 2, 2);
+    d.addCreature(c3, 3, 3);
+
+    CPPUNIT_ASSERT(d.map.gameMap.find(point(0, 0)) != d.map.gameMap.end());
+    CPPUNIT_ASSERT(d.map.gameMap.find(point(1, 1)) != d.map.gameMap.end());
+    CPPUNIT_ASSERT(d.map.gameMap.find(point(2, 2)) != d.map.gameMap.end());
+    CPPUNIT_ASSERT(d.map.gameMap.find(point(3, 3)) != d.map.gameMap.end());
+    
+    CreatureData& test0 = d.map.gameMap.find(point(0, 0))->second;
+    CreatureData& test1 = d.map.gameMap.find(point(1, 1))->second;
+    CreatureData& test2 = d.map.gameMap.find(point(2, 2))->second;
+    CreatureData& test3 = d.map.gameMap.find(point(3, 3))->second;
+
+    CPPUNIT_ASSERT(test0.creature.species == "hopper");
+    CPPUNIT_ASSERT(test0.creature.direction == North);
+    CPPUNIT_ASSERT(test0.x == 0);
+    CPPUNIT_ASSERT(test0.y == 0);
+    CPPUNIT_ASSERT(!test0.alreadyMovedThisTurn);
+    CPPUNIT_ASSERT(test1.creature.species == "rover");
+    CPPUNIT_ASSERT(test1.creature.direction == South);
+    CPPUNIT_ASSERT(test1.x == 1);
+    CPPUNIT_ASSERT(test1.y == 1);
+    CPPUNIT_ASSERT(!test1.alreadyMovedThisTurn);
+    CPPUNIT_ASSERT(test2.creature.species == "food");
+    CPPUNIT_ASSERT(test2.creature.direction == East);
+    CPPUNIT_ASSERT(test2.x == 2);
+    CPPUNIT_ASSERT(test2.y == 2);
+    CPPUNIT_ASSERT(!test2.alreadyMovedThisTurn);
+    CPPUNIT_ASSERT(test3.creature.species == "trap");
+    CPPUNIT_ASSERT(test3.creature.direction == West);
+    CPPUNIT_ASSERT(test3.x == 3);
+    CPPUNIT_ASSERT(test3.y == 3);
+    CPPUNIT_ASSERT(!test3.alreadyMovedThisTurn);
   }
 
   void run01 () {
+    ostringstream w;
+    Darwin d (1, 1, w);
+    Creature c0 ("food", North);
 
+    d.addCreature(c0, 0, 0);
+
+    Creature& cr0 = d.map.gameMap.find(point(0, 0))->second.creature;
+    CPPUNIT_ASSERT(cr0.direction == North);
+
+    d.run(1, 1);
+
+    CPPUNIT_ASSERT(cr0.direction == West);
   }
 
   void run02 () {
+    ostringstream w;
+    Darwin d (2, 1, w);
+    Creature c0 ("hopper", North);
 
+    d.addCreature(c0, 1, 0);
+
+    CreatureData& cdr0 = d.map.gameMap.find(point(1, 0))->second;
+    CPPUNIT_ASSERT(cdr0.creature.direction == North);
+
+    d.run(1, 1);
+
+    CPPUNIT_ASSERT(d.map.gameMap.find(point(0, 0)) != d.map.gameMap.end());
+
+    CreatureData& cdrt0 = d.map.gameMap.find(point(0, 0))->second;
+    CPPUNIT_ASSERT(cdrt0.x == 0);
+    CPPUNIT_ASSERT(cdrt0.y == 0);
   }
 
   void run03 () {
+    ostringstream w;
+    Darwin d (2, 2, w);
+    Creature c0 ("food", North);
+    Creature c1 ("rover", North);
 
+    d.addCreature(c0, 0, 0);
+    d.addCreature(c1, 1, 0);
+
+    CreatureData& cdr0 = d.map.gameMap.find(point(0, 0))->second;
+    CreatureData& cdr1 = d.map.gameMap.find(point(1, 0))->second;
+    CPPUNIT_ASSERT(cdr1.creature.direction == North);
+
+    d.run(1, 1);
+
+    CPPUNIT_ASSERT(d.map.gameMap.find(point(0, 0)) != d.map.gameMap.end());
+    CPPUNIT_ASSERT(d.map.gameMap.find(point(1, 0)) != d.map.gameMap.end());
+
+    CreatureData& cdrt0 = d.map.gameMap.find(point(0, 0))->second;
+    CreatureData& cdrt1 = d.map.gameMap.find(point(1, 0))->second;
+
+    CPPUNIT_ASSERT(cdrt0.creature.species == "rover");
+    CPPUNIT_ASSERT(cdrt1.creature.species == "rover");
   }
 
   //--------------------------------

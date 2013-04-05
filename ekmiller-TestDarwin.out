@@ -1,4 +1,3 @@
-valgrind ./TestDarwin
 TestDarwin.c++
 ..............................
 
