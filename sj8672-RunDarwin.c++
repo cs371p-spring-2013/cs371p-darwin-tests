@@ -199,6 +199,12 @@ int main () {
     // ----------
     try {
 	cout << "*** Darwin 1x1 ***" << endl;
+    /*
+    1x1 Darwin
+    Trap,   facing west, at (0, 0)
+    Simulate 5 moves.
+    Print every grid.
+         */
 	Grid<1,1> grid;
 	Creature t1(trap, 0);
 	grid.add_creature(t1, 0, 0);
@@ -220,6 +226,12 @@ int main () {
     // ----------
     try {
 	cout << "*** Darwin 1x2 ***" << endl;
+    /*
+    7x9 Darwin
+    Hopper, facing east,  at (0, 0)
+    Simulate 5 moves.
+    Print every grid.
+    */
 	Grid<1,2> grid;
 	Creature h1(hopper, 2);
 	grid.add_creature(h1, 0, 0);
@@ -241,6 +253,12 @@ int main () {
     // ----------
     try {
 	cout << "*** Darwin 2x2 ***" << endl;
+    /*
+    2x2 Darwin
+    Rover, facing east,  at (0, 0)
+    Simulate 5 moves.
+    Print every grid.
+    */
 	Grid<2,2> grid;
 	Creature r1(rover, 2);
 	grid.add_creature(r1, 0, 0);
@@ -262,6 +280,13 @@ int main () {
     // ----------
     try {
 	cout << "*** Darwin 2x2 ***" << endl;
+    /*
+    2x2 Darwin
+    Food, facing south,  at (0, 0)
+    Trap, facing west,   at (0, 1)
+    Simulate 5 moves.
+    Print every grid.
+    */
 	Grid<2,2> grid;
 	Creature f1(food, 3);
 	grid.add_creature(f1, 0, 0);
@@ -285,6 +310,13 @@ int main () {
     // ----------
     try {
 	cout << "*** Darwin 2x2 ***" << endl;
+    /*
+    2x2 Darwin
+    Food, facing south,  at (0, 0)
+    Food, facing west,   at (1, 1)
+    Simulate 5 moves.
+    Print every grid.
+    */
 	Grid<2,2> grid;
 	Creature f1(food, 3);
 	grid.add_creature(f1, 0, 0);
@@ -308,6 +340,11 @@ int main () {
     // ----------
     try {
 	cout << "*** Darwin 5x5 ***" << endl;
+    /*
+    5x5 Darwin
+    Simulate 5 moves.
+    Print every grid.
+    */
 	Grid<5,5> grid;
         cout << "Turn 0" << endl;
         grid.print();
@@ -327,6 +364,12 @@ int main () {
     // ----------
     try {
 	cout << "*** Darwin 3x3 ***" << endl;
+    /*
+    3x3 Darwin
+    Hopper, facing west,  at (0, 2)
+    Simulate 5 moves.
+    Print every grid.
+    */
 	Grid<3,3> grid;
 	Creature h1(hopper, 0);
 	grid.add_creature(h1, 0, 2);
@@ -348,6 +391,15 @@ int main () {
     // ----------
     try {
 	cout << "*** Darwin 2x2 ***" << endl;
+    /*
+    2x2 Darwin
+    Food,   facing west,  at (0, 0)
+    Hopper, facing west,  at (0, 1)
+    Trap,   facing west,  at (1, 0)
+    Rover,  facing west,  at (1, 1)
+    Simulate 5 moves.
+    Print every grid.
+    */
 	Grid<2,2> grid;
 	Creature f1(food, 0);
 	grid.add_creature(f1, 0, 0);
@@ -376,7 +428,7 @@ int main () {
     // ------------
 
     try {
-        //cout << "*** Darwin 72x72 without Best ***" << endl;
+        cout << "*** Darwin 72x72 without Best ***" << endl;
         srand(0);
         /*
         Randomly place the following creatures facing randomly.
@@ -392,7 +444,37 @@ int main () {
         Simulate 1000 moves.
         Print every 100th grid.
         */
+	Grid<72, 72> grid;
+	for(int i = 0; i < 10; ++i) {
+	    int position = rand() % 5184;
+	    Creature creature(food, rand() % 4);
+	    grid.add_creature(creature, position / 72, position % 72);
         }
+	for(int i = 0; i < 10; ++i) {
+	    int position = rand() % 5184;
+	    Creature creature(hopper, rand() % 4);
+	    grid.add_creature(creature, position / 72, position % 72);
+        }
+	for(int i = 0; i < 10; ++i) {
+	    int position = rand() % 5184;
+	    Creature creature(rover, rand() % 4);
+	    grid.add_creature(creature, position / 72, position % 72);
+        }
+	for(int i = 0; i < 10; ++i) {
+	    int position = rand() % 5184;
+	    Creature creature(trap, rand() % 4);
+	    grid.add_creature(creature, position / 72, position % 72);
+        }
+        cout << "Turn 0" << endl;
+        grid.print();
+        for(int i = 1; i <= 1000; ++i) {
+            grid.execute_turn();
+            if(i % 100 == 0) { 
+	        cout << "Turn " << i << endl;
+                grid.print();
+	    }
+        }
+	}
     catch (const invalid_argument&) {
         assert(false);}
     catch (const out_of_range&) {
@@ -422,6 +504,41 @@ int main () {
         Best MUST outnumber ALL other species for the bonus pts.
         Print every 100th grid.
         */
+	Grid<72, 72> grid;
+	for(int i = 0; i < 10; ++i) {
+	    int position = rand() % 5184;
+	    Creature creature(food, rand() % 4);
+	    grid.add_creature(creature, position / 72, position % 72);
+        }
+	for(int i = 0; i < 10; ++i) {
+	    int position = rand() % 5184;
+	    Creature creature(hopper, rand() % 4);
+	    grid.add_creature(creature, position / 72, position % 72);
+        }
+	for(int i = 0; i < 10; ++i) {
+	    int position = rand() % 5184;
+	    Creature creature(rover, rand() % 4);
+	    grid.add_creature(creature, position / 72, position % 72);
+        }
+	for(int i = 0; i < 10; ++i) {
+	    int position = rand() % 5184;
+	    Creature creature(trap, rand() % 4);
+	    grid.add_creature(creature, position / 72, position % 72);
+        }
+	for(int i = 0; i < 10; ++i) {
+	    int position = rand() % 5184;
+	    Creature creature(best, rand() % 4);
+	    grid.add_creature(creature, position / 72, position % 72);
+        }
+        cout << "Turn 0" << endl;
+        grid.print();
+        for(int i = 1; i <= 1000; ++i) {
+            grid.execute_turn();
+            if(i % 100 == 0) { 
+	        cout << "Turn " << i << endl;
+                grid.print();
+	    }
+        }
         }
     catch (const invalid_argument&) {
         assert(false);}
