@@ -1,0 +1,28 @@
+==1522== Memcheck, a memory error detector
+==1522== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+==1522== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==1522== Command: TestDarwin
+==1522== 
+TestDarwin.c++
+.............................................................................
+
+
+OK (77 tests)
+
+
+Done.
+==1522== 
+==1522== HEAP SUMMARY:
+==1522==     in use at exit: 122,880 bytes in 6 blocks
+==1522==   total heap usage: 3,465 allocs, 3,459 frees, 636,207 bytes allocated
+==1522== 
+==1522== LEAK SUMMARY:
+==1522==    definitely lost: 0 bytes in 0 blocks
+==1522==    indirectly lost: 0 bytes in 0 blocks
+==1522==      possibly lost: 0 bytes in 0 blocks
+==1522==    still reachable: 122,880 bytes in 6 blocks
+==1522==         suppressed: 0 bytes in 0 blocks
+==1522== Rerun with --leak-check=full to see details of leaked memory
+==1522== 
+==1522== For counts of detected and suppressed errors, rerun with: -v
+==1522== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 4)
